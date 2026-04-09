@@ -76,6 +76,19 @@ body.light .cic-label{color:#888;}
 .cic-val-m{font-size:12px;color:var(--text-muted);}
 body.light .cic-val-m{color:#555;}
 @media(max-width:768px){.schol-hero-content{grid-template-columns:1fr;}.elig-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+
+/* ── NAV DROPDOWNS ── */
+.nav-dropdown{position:relative;display:flex;align-items:center;}
+.nav-dropdown-trigger{color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 13px;border-radius:7px;transition:all .2s;font-weight:500;cursor:pointer;white-space:nowrap;}
+.nav-dropdown-trigger:hover,.nav-dropdown:hover .nav-dropdown-trigger{color:var(--text);background:var(--bg3);}
+body.light .nav-dropdown-trigger:hover,body.light .nav-dropdown:hover .nav-dropdown-trigger{color:#0D0D0D;background:#F0F0F0;}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--card2);border:1px solid var(--border2);border-radius:12px;padding:6px;min-width:190px;box-shadow:0 16px 48px rgba(0,0,0,0.4);z-index:200;}
+body.light .nav-dropdown-menu{background:#FFFFFF;border-color:rgba(0,0,0,0.1);box-shadow:0 16px 48px rgba(0,0,0,0.12);}
+.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;}
+.nav-dropdown-menu a{color:var(--text-muted);text-decoration:none;font-size:13px;padding:9px 13px;border-radius:8px;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:8px;}
+.nav-dropdown-menu a:hover{color:var(--orange);background:var(--orange-glow);}
+body.light .nav-dropdown-menu a{color:#555;}
+body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,107,26,0.08);}
 </style>
 </head>
 <body>
@@ -88,11 +101,24 @@ body.light .cic-val-m{color:#555;}
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="trainings.html">Trainings</a>
+    <div class="nav-dropdown">
+    <a href="trainings.html" class="nav-dropdown-trigger">Trainings ▾</a>
+    <div class="nav-dropdown-menu">
+      <a href="trainings.html">📚 All Courses</a>
+      <a href="scholarship.html">🎓 Scholarships</a>
+    </div>
+  </div>
     <a href="consultancy.html">Consultancy</a>
     <a href="services.html">Services</a>
     <a href="scholarship.html" class="active">Scholarship</a>
-    <a href="#">Blog</a>
+    <div class="nav-dropdown">
+    <a href="#" class="nav-dropdown-trigger">More ▾</a>
+    <div class="nav-dropdown-menu">
+      <a href="services.html">✨ Exclusive Services</a>
+      <a href="#">📝 Blog</a>
+      <a href="index.html#contact">📞 Contact</a>
+    </div>
+  </div>
   </div>
   <div class="nav-right">
     <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>

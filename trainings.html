@@ -66,6 +66,19 @@ body.light .feat-desc{color:#555;}
 .filter-btn:hover,.filter-btn.active{background:var(--orange-glow);border-color:var(--border);color:var(--orange);}
 body.light .filter-btn{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#555;}
 body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,107,26,0.08);border-color:rgba(255,107,26,0.2);color:var(--orange);}
+
+/* ── NAV DROPDOWNS ── */
+.nav-dropdown{position:relative;display:flex;align-items:center;}
+.nav-dropdown-trigger{color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 13px;border-radius:7px;transition:all .2s;font-weight:500;cursor:pointer;white-space:nowrap;}
+.nav-dropdown-trigger:hover,.nav-dropdown:hover .nav-dropdown-trigger{color:var(--text);background:var(--bg3);}
+body.light .nav-dropdown-trigger:hover,body.light .nav-dropdown:hover .nav-dropdown-trigger{color:#0D0D0D;background:#F0F0F0;}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--card2);border:1px solid var(--border2);border-radius:12px;padding:6px;min-width:190px;box-shadow:0 16px 48px rgba(0,0,0,0.4);z-index:200;}
+body.light .nav-dropdown-menu{background:#FFFFFF;border-color:rgba(0,0,0,0.1);box-shadow:0 16px 48px rgba(0,0,0,0.12);}
+.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;}
+.nav-dropdown-menu a{color:var(--text-muted);text-decoration:none;font-size:13px;padding:9px 13px;border-radius:8px;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:8px;}
+.nav-dropdown-menu a:hover{color:var(--orange);background:var(--orange-glow);}
+body.light .nav-dropdown-menu a{color:#555;}
+body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,107,26,0.08);}
 </style>
 </head>
 <body>
@@ -82,7 +95,14 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
     <a href="consultancy.html">Consultancy</a>
     <a href="services.html">Services</a>
     <a href="scholarship.html">Scholarship</a>
-    <a href="#">Blog</a>
+    <div class="nav-dropdown">
+    <a href="#" class="nav-dropdown-trigger">More ▾</a>
+    <div class="nav-dropdown-menu">
+      <a href="services.html">✨ Exclusive Services</a>
+      <a href="#">📝 Blog</a>
+      <a href="index.html#contact">📞 Contact</a>
+    </div>
+  </div>
   </div>
   <div class="nav-right">
     <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
@@ -146,116 +166,171 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
     </div>
     <div class="courses-grid" id="coursesGrid">
 
+      <!-- 1. Data Science -->
       <div class="course-card fade-up" data-type="live">
         <div class="course-thumb th-amber">📊<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">Data & Analytics</div>
           <div class="course-title">Data Science</div>
-          <div class="course-desc">Hands-on data science with Python, machine learning, and real-world datasets guided by certified experts. Build production-ready models and analytics pipelines.</div>
+          <div class="course-desc">Hands-on data science with Python, machine learning, and real-world datasets. Build production-ready models and analytics pipelines guided by certified experts.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 Nolawit Fantahun</div>
             <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 2. AWS Cloud -->
       <div class="course-card fade-up" data-type="live">
         <div class="course-thumb th-blue">☁️<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">Cloud Engineering</div>
-          <div class="course-title">AWS Cloud</div>
-          <div class="course-desc">AWS Solutions Architect & Cloud Engineering certification pathway with hands-on lab environments. Covers EC2, S3, Lambda, VPC, IAM and more.</div>
+          <div class="course-title">AWS Cloud Services</div>
+          <div class="course-desc">AWS Solutions Architect & Cloud Engineering certification pathway. Covers EC2, S3, Lambda, VPC, IAM, RDS and more with hands-on lab environments.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 Ellon Solomon</div>
-            <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
+            <div class="course-meta-item">⏱ 9–12 Weeks</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$1,500</div><div class="course-price-sub">Live · $1,000 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 3. Full Stack Web Dev -->
       <div class="course-card fade-up" data-type="live">
         <div class="course-thumb th-teal">🌐<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">Web Development</div>
-          <div class="course-title">Full Stack Web Dev</div>
-          <div class="course-desc">Build complete web applications from scratch. Covers HTML, CSS, JavaScript, React, Node.js, databases and deployment. Job-ready portfolio projects included.</div>
+          <div class="course-title">Full Stack Web Development</div>
+          <div class="course-desc">Build complete web applications from scratch. HTML, CSS, JavaScript, React, Node.js, databases, and deployment. Job-ready portfolio projects included.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 Akele Belaye</div>
-            <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
+            <div class="course-meta-item">⏱ 10–12 Weeks</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 4. DBA / Power BI -->
       <div class="course-card fade-up" data-type="live">
         <div class="course-thumb th-purple">🗄️<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">Database & BI</div>
-          <div class="course-title">DBA / Power BI</div>
-          <div class="course-desc">Database administration with SQL Server combined with Microsoft Power BI data analytics. Build dashboards, write complex queries, and manage enterprise databases.</div>
+          <div class="course-title">DBA with SQL + Power BI</div>
+          <div class="course-desc">Database administration with SQL Server combined with Microsoft Power BI analytics. Build dashboards, write complex queries, and manage enterprise databases.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 Abraham & Mekdes</div>
-            <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
+            <div class="course-meta-item">⏱ 10–12 Weeks</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 5. MuleSoft -->
       <div class="course-card fade-up" data-type="live">
         <div class="course-thumb th-red">⚡<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">Integration & API</div>
           <div class="course-title">MuleSoft Integration</div>
-          <div class="course-desc">Master MuleSoft Anypoint Platform for enterprise API integration. Design, build, and manage APIs and integrations used by Fortune 500 companies.</div>
+          <div class="course-desc">Master MuleSoft Anypoint Platform for enterprise API integration. Design, build, and manage APIs used by Fortune 500 companies worldwide.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 AfroCodersHub Team</div>
             <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 6. Microsoft 365 Admin -->
       <div class="course-card fade-up" data-type="live">
         <div class="course-thumb th-indigo">🖥️<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">IT Administration</div>
           <div class="course-title">Microsoft 365 Admin</div>
-          <div class="course-desc">Comprehensive Microsoft 365 administration covering Exchange, SharePoint, Teams, Azure AD, security and compliance. Prepares you for MS-100 & MS-101 certifications.</div>
+          <div class="course-desc">Comprehensive Microsoft 365 administration covering Exchange, SharePoint, Teams, Azure AD, security and compliance. Prepares for MS-100 & MS-101 certifications.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 AfroCodersHub Team</div>
             <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 7. Microsoft Power BI (standalone) -->
       <div class="course-card fade-up" data-type="live">
-        <div class="course-thumb th-green">👨‍👩‍👧<div class="course-status status-live">● Live</div></div>
+        <div class="course-thumb th-amber" style="background:linear-gradient(145deg,#0c0700,#241500);">📈<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Business Intelligence</div>
+          <div class="course-title">Microsoft Power BI</div>
+          <div class="course-desc">Transform raw data into stunning interactive dashboards. Learn DAX, Power Query, data modeling, and publishing reports for enterprise decision-making.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 10 Weeks</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,000</div><div class="course-price-sub">Live · $700 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. CCNA Networking -->
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-green">🔌<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Networking</div>
+          <div class="course-title">CCNA Networking Basics</div>
+          <div class="course-desc">Cisco CCNA fundamentals covering networking concepts, IP addressing, routing, switching, security basics, and wireless networking. Prep for CCNA certification.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Java & Python -->
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-sky">🐍<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Programming Languages</div>
+          <div class="course-title">Java & Python Programming</div>
+          <div class="course-desc">Master two of the most in-demand programming languages. Covers OOP, data structures, algorithms, and real-world application development in both Java and Python.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. TechBridge for Parents -->
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-pink">👨‍👩‍👧<div class="course-status status-live">● Live</div></div>
         <div class="course-body">
           <div class="course-cat">Digital Literacy</div>
           <div class="course-title">TechBridge for Parents</div>
@@ -263,25 +338,24 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
           <div class="course-meta-row">
             <div class="course-meta-item">👤 AfroCodersHub Team</div>
             <div class="course-meta-item">⏱ 8 Weeks</div>
-            <div class="course-meta-item">📅 2× per week</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">$600</div><div class="course-price-sub">Live · $400 Self-paced</div></div>
-            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol →</a>
           </div>
         </div>
       </div>
 
+      <!-- 11. Azure Fundamentals - Coming Soon -->
       <div class="course-card fade-up" data-type="upcoming">
-        <div class="course-thumb th-sky">☁️<div class="course-status status-upcoming">⏳ Coming Soon</div></div>
+        <div class="course-thumb th-sky" style="background:linear-gradient(145deg,#020d14,#062240);">☁️<div class="course-status status-upcoming">⏳ Coming Soon</div></div>
         <div class="course-body">
           <div class="course-cat">Cloud Engineering</div>
           <div class="course-title">Azure Fundamentals</div>
-          <div class="course-desc">Microsoft Azure cloud fundamentals covering core services, pricing, compliance, and architecture. Prepares you for the AZ-900 certification exam.</div>
+          <div class="course-desc">Microsoft Azure cloud fundamentals covering core services, pricing, compliance, and architecture. Prepares for the AZ-900 certification exam.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 AfroCodersHub Team</div>
             <div class="course-meta-item">⏱ 12 Weeks</div>
-            <div class="course-meta-item">📅 3× per week</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">TBA</div><div class="course-price-sub">Register interest</div></div>
@@ -290,16 +364,16 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
         </div>
       </div>
 
+      <!-- 12. Youth Coders - Coming Soon -->
       <div class="course-card fade-up" data-type="upcoming">
-        <div class="course-thumb th-pink">🧑‍💻<div class="course-status status-upcoming">⏳ Coming Soon</div></div>
+        <div class="course-thumb th-pink" style="background:linear-gradient(145deg,#100510,#280a28);">🧑‍💻<div class="course-status status-upcoming">⏳ Coming Soon</div></div>
         <div class="course-body">
           <div class="course-cat">Youth Programs</div>
           <div class="course-title">Youth Coders Program</div>
-          <div class="course-desc">Coding fundamentals for young learners aged 12-18. Teaches Python, web basics, and computational thinking through fun, project-based learning.</div>
+          <div class="course-desc">Coding fundamentals for young learners aged 12–18. Teaches Python, web basics, and computational thinking through fun, project-based learning.</div>
           <div class="course-meta-row">
             <div class="course-meta-item">👤 AfroCodersHub Team</div>
             <div class="course-meta-item">⏱ 10 Weeks</div>
-            <div class="course-meta-item">📅 2× per week</div>
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">TBA</div><div class="course-price-sub">Register interest</div></div>

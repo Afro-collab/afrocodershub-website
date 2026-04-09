@@ -57,7 +57,20 @@ textarea.form-input{resize:vertical;min-height:120px;}
 body.light .form-select{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0D0D0D;}
 .form-submit-btn{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;}
 .form-submit-btn:hover{background:var(--orange-dark);}
-@media(max-width:768px){.consult-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+@media(max-width:768px){.consult-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}} @media(max-width:960px){.page-hero .page-hero-inner > div > div:last-child{display:none;}}
+
+/* ── NAV DROPDOWNS ── */
+.nav-dropdown{position:relative;display:flex;align-items:center;}
+.nav-dropdown-trigger{color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 13px;border-radius:7px;transition:all .2s;font-weight:500;cursor:pointer;white-space:nowrap;}
+.nav-dropdown-trigger:hover,.nav-dropdown:hover .nav-dropdown-trigger{color:var(--text);background:var(--bg3);}
+body.light .nav-dropdown-trigger:hover,body.light .nav-dropdown:hover .nav-dropdown-trigger{color:#0D0D0D;background:#F0F0F0;}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--card2);border:1px solid var(--border2);border-radius:12px;padding:6px;min-width:190px;box-shadow:0 16px 48px rgba(0,0,0,0.4);z-index:200;}
+body.light .nav-dropdown-menu{background:#FFFFFF;border-color:rgba(0,0,0,0.1);box-shadow:0 16px 48px rgba(0,0,0,0.12);}
+.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;}
+.nav-dropdown-menu a{color:var(--text-muted);text-decoration:none;font-size:13px;padding:9px 13px;border-radius:8px;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:8px;}
+.nav-dropdown-menu a:hover{color:var(--orange);background:var(--orange-glow);}
+body.light .nav-dropdown-menu a{color:#555;}
+body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,107,26,0.08);}
 </style>
 </head>
 <body>
@@ -70,11 +83,24 @@ body.light .form-select{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="trainings.html">Trainings</a>
+    <div class="nav-dropdown">
+    <a href="trainings.html" class="nav-dropdown-trigger">Trainings ▾</a>
+    <div class="nav-dropdown-menu">
+      <a href="trainings.html">📚 All Courses</a>
+      <a href="scholarship.html">🎓 Scholarships</a>
+    </div>
+  </div>
     <a href="consultancy.html" class="active">Consultancy</a>
     <a href="services.html">Services</a>
     <a href="scholarship.html">Scholarship</a>
-    <a href="#">Blog</a>
+    <div class="nav-dropdown">
+    <a href="#" class="nav-dropdown-trigger">More ▾</a>
+    <div class="nav-dropdown-menu">
+      <a href="services.html">✨ Exclusive Services</a>
+      <a href="#">📝 Blog</a>
+      <a href="index.html#contact">📞 Contact</a>
+    </div>
+  </div>
   </div>
   <div class="nav-right">
     <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
@@ -113,11 +139,33 @@ body.light .form-select{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0
   </div>
 </div>
 
-<div class="page-hero">
+<div class="page-hero" style="padding-bottom:0;">
   <div class="page-hero-inner">
     <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Consultancy</div>
-    <h1>Expert <span>Consultancy</span> Services</h1>
-    <p class="page-hero-sub">Strategic technology and marketing consulting to help your organization navigate digital transformation, optimize IT infrastructure, and drive measurable growth.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-bottom:60px;">
+      <div>
+        <h1>Expert <span>Consultancy</span> Services</h1>
+        <p class="page-hero-sub" style="margin-top:16px;">Strategic technology and marketing consulting to help your organization navigate digital transformation, optimize IT infrastructure, and drive measurable growth.</p>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+          <a href="#consult-form" class="btn-primary" style="padding:12px 24px;font-size:14px;border-radius:10px;">📞 Request Consultation</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="btn-ghost" style="padding:12px 24px;font-size:14px;border-radius:10px;">✉ Email Us</a>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <img src="student-male2.png" alt="AfroCodersHub Consultant" style="width:100%;height:400px;object-fit:cover;object-position:center top;border-radius:20px;border:1px solid var(--border);display:block;">
+        <div style="position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(255,107,26,0.08),transparent 60%);pointer-events:none;"></div>
+        <div style="position:absolute;bottom:18px;left:18px;background:rgba(20,20,25,0.92);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:14px 18px;">
+          <div style="font-size:9px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Response Time</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--orange);">Within 24h</div>
+          <div style="font-size:11px;color:var(--text-muted);">Business Days</div>
+        </div>
+        <div style="position:absolute;top:18px;right:18px;background:rgba(20,20,25,0.92);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:12px 16px;text-align:center;">
+          <div style="font-size:9px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Experience</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--orange);">7+ Years</div>
+          <div style="font-size:11px;color:var(--text-muted);">Tech Consulting</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -224,7 +272,7 @@ body.light .form-select{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0
 </section>
 
 <!-- CONTACT FORM -->
-<section class="section form-section" style="background:var(--bg);">
+<section class="section form-section" id="consult-form" style="background:var(--bg);">
   <div class="section-inner">
     <div style="text-align:center;margin-bottom:0;">
       <div class="section-tag" style="display:inline-flex;">Request a Consultation</div>
