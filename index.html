@@ -29,7 +29,7 @@ body.light .btn-ghost:hover{color:#0D0D0D;border-color:rgba(0,0,0,0.3);backgroun
 body.light .hamburger{background:#F0F0F0;border-color:rgba(0,0,0,0.12);}
 body.light .hamburger span{background:#0D0D0D;}
 body.light .hero{background:#FFFFFF;}
-body.light .hero-grid{background-image:linear-gradient(rgba(255,107,26,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,26,0.04) 1px,transparent 1px);}
+body.light .hero-grid{background-image:none;}
 body.light .hero-title{color:#0D0D0D;}
 body.light .hero-desc{color:#444;}
 body.light .hero-tag{background:rgba(255,107,26,0.08);border-color:rgba(255,107,26,0.2);}
@@ -126,6 +126,16 @@ body.light .drawer-divider{background:rgba(0,0,0,0.08);}
 .btn-primary:hover{background:var(--orange-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,107,26,0.3);}
 .btn-ghost{background:transparent;color:var(--text-muted);border:1px solid var(--border2);padding:9px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;}
 .btn-ghost:hover{color:var(--text);border-color:var(--border);}
+.btn-portal{background:transparent;color:var(--blue);border:1.5px solid var(--blue);padding:9px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;}
+.btn-portal:hover{background:var(--blue);color:#fff;transform:translateY(-1px);box-shadow:0 8px 20px rgba(74,158,255,0.3);}
+body.light .btn-portal{color:#1D6FB8;border-color:#1D6FB8;}
+body.light .btn-portal:hover{background:#1D6FB8;color:#fff;box-shadow:0 8px 20px rgba(29,111,184,0.25);}
+.btn-signin{background:transparent;color:var(--text);border:1.5px solid var(--border2);padding:13px 26px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;position:relative;overflow:hidden;}
+.btn-signin::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,255,0.08),rgba(155,109,255,0.08));opacity:0;transition:opacity .2s;}
+.btn-signin:hover::before{opacity:1;}
+.btn-signin:hover{border-color:rgba(74,158,255,0.5);color:var(--blue);transform:translateY(-1px);}
+body.light .btn-signin{color:#0D0D0D;border-color:rgba(0,0,0,0.15);}
+body.light .btn-signin:hover{border-color:#1D6FB8;color:#1D6FB8;}
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;cursor:pointer;padding:9px;flex-shrink:0;}
 .hamburger span{display:block;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
 .hero{position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center;background:var(--bg);}
@@ -339,7 +349,7 @@ footer{background:var(--bg);border-top:1px solid var(--border2);padding:56px 2.5
     <a href="#">Blog</a>
   </div>
   <div class="nav-right">
-    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-ghost">Student Portal</a>
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><div class="theme-toggle-thumb"></div></button>
     <a href="https://afrocodershub-lms.netlify.app" class="btn-primary">🎓 Enrol Now</a>
     <button class="hamburger" id="ham" onclick="openDrawer()"><span></span><span></span><span></span></button>
@@ -379,12 +389,12 @@ footer{background:var(--bg);border-top:1px solid var(--border2);padding:56px 2.5
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-tag"><div class="hero-dot"></div>Est. 2017 · Sterling, Virginia</div>
+      <div class="hero-tag"><div class="hero-dot"></div>Est. 2017</div>
       <h1 class="hero-title">Empowering<br><span class="accent">African Tech</span><br>Leaders</h1>
       <p class="hero-desc">World-class tech training, consulting, and digital solutions — built for the next generation of African coders and tech entrepreneurs.</p>
       <div class="hero-ctas">
         <a href="https://afrocodershub-lms.netlify.app" class="btn-primary btn-lg">🚀 Start Learning — Sign Up Free</a>
-        <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-ghost btn-lg">Already a student? Sign In →</a>
+        <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-signin btn-lg">Already a student? Sign In →</a>
       </div>
       <div class="hero-journey">
         <div class="jstep"><div class="jstep-num">1</div><div class="jstep-label">Sign Up Free</div></div>
