@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultancy — AfroCodersHub</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.consult-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;}
+.consult-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:36px;transition:all .25s;}
+.consult-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,0.2);}
+body.light .consult-card{background:#fff;border-color:rgba(0,0,0,0.08);box-shadow:0 2px 12px rgba(0,0,0,0.05);}
+body.light .consult-card:hover{border-color:rgba(255,107,26,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.1);}
+.consult-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;}
+.ci-blue{background:rgba(74,158,255,0.1);border:1px solid rgba(74,158,255,0.2);}
+.ci-orange{background:var(--orange-glow);border:1px solid var(--border);}
+.ci-green{background:rgba(45,202,110,0.1);border:1px solid rgba(45,202,110,0.2);}
+.ci-purple{background:rgba(155,109,255,0.1);border:1px solid rgba(155,109,255,0.2);}
+.consult-title{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin-bottom:12px;}
+body.light .consult-title{color:#0D0D0D;}
+.consult-desc{font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:20px;}
+body.light .consult-desc{color:#444;}
+.consult-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.consult-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);}
+body.light .consult-features li{color:#555;}
+.consult-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;}
+.process-section{background:var(--bg2);border-top:1px solid var(--border2);}
+body.light .process-section{background:#F8F8F8;border-color:rgba(0,0,0,0.06);}
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:48px;}
+.process-step{display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--border2);}
+body.light .process-step{border-color:rgba(0,0,0,0.08);}
+.process-step:last-child{border-bottom:none;}
+.process-num{width:48px;height:48px;border-radius:14px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--orange);flex-shrink:0;}
+.process-content-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px;}
+body.light .process-content-title{color:#0D0D0D;}
+.process-content-desc{font-size:14px;color:var(--text-muted);line-height:1.7;}
+body.light .process-content-desc{color:#555;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:48px;}
+.stat-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:24px;text-align:center;}
+body.light .stat-card{background:#fff;border-color:rgba(0,0,0,0.08);}
+.stat-card-num{font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:var(--orange);margin-bottom:6px;}
+.stat-card-label{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;font-family:'Space Mono',monospace;}
+body.light .stat-card-label{color:#888;}
+.form-section{background:var(--bg);border-top:1px solid var(--border2);}
+.contact-form{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:40px;max-width:680px;margin:48px auto 0;}
+body.light .contact-form{background:#fff;border-color:rgba(0,0,0,0.08);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.form-label{font-size:12px;font-weight:600;color:var(--text-muted);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;}
+body.light .form-label{color:#555;}
+.form-input{background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;}
+.form-input:focus{border-color:var(--border);}
+body.light .form-input{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0D0D0D;}
+body.light .form-input:focus{border-color:rgba(255,107,26,0.4);}
+textarea.form-input{resize:vertical;min-height:120px;}
+.form-select{background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;cursor:pointer;}
+body.light .form-select{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0D0D0D;}
+.form-submit-btn{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;}
+.form-submit-btn:hover{background:var(--orange-dark);}
+@media(max-width:768px){.consult-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
+
+<nav id="mainnav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
+    <div><div class="nav-logo-name">AfroCodersHub</div><div class="nav-logo-sub">Empowering Tech Solutions</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trainings.html">Trainings</a>
+    <a href="consultancy.html" class="active">Consultancy</a>
+    <a href="services.html">Services</a>
+    <a href="scholarship.html">Scholarship</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><div class="theme-toggle-thumb"></div></button>
+    <a href="index.html#contact" class="btn-primary">📞 Get in Touch</a>
+    <button class="hamburger" id="ham" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <div class="drawer-head-logo"><img src="logo.png" alt="Logo"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;">AfroCodersHub</div></div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="trainings.html">📚 Trainings</a>
+      <a href="consultancy.html" class="active">💼 Consultancy</a>
+      <a href="services.html">✨ Services</a>
+      <a href="scholarship.html">🎓 Scholarship</a>
+      <a href="#">📰 Blog</a>
+      <div class="drawer-divider"></div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
+    </div>
+    <div class="drawer-theme">
+      <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'Space Mono',monospace;margin-bottom:8px;">Theme</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:12px;color:var(--text-muted);">🌙 Dark</span>
+        <button class="theme-toggle" onclick="toggleTheme()"><div class="theme-toggle-thumb"></div></button>
+        <span style="font-size:12px;color:var(--text-muted);">☀️ Light</span>
+      </div>
+    </div>
+    <div class="drawer-foot"><a href="index.html#contact" class="btn-primary" style="width:100%;justify-content:center;">📞 Get in Touch</a></div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Consultancy</div>
+    <h1>Expert <span>Consultancy</span> Services</h1>
+    <p class="page-hero-sub">Strategic technology and marketing consulting to help your organization navigate digital transformation, optimize IT infrastructure, and drive measurable growth.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section" style="background:var(--bg);padding-bottom:0;">
+  <div class="section-inner">
+    <div class="stats-row">
+      <div class="stat-card fade-up"><div class="stat-card-num">7+</div><div class="stat-card-label">Years Experience</div></div>
+      <div class="stat-card fade-up"><div class="stat-card-num">50+</div><div class="stat-card-label">Clients Served</div></div>
+      <div class="stat-card fade-up"><div class="stat-card-num">100%</div><div class="stat-card-label">Client Satisfaction</div></div>
+      <div class="stat-card fade-up"><div class="stat-card-num">24h</div><div class="stat-card-label">Response Time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="section-tag">Our Expertise</div>
+    <h2 class="section-title">Consultancy <span>Services</span></h2>
+    <p class="section-sub">We bring deep technical and strategic expertise across technology and marketing to help your business thrive.</p>
+    <div class="consult-grid">
+      <div class="consult-card fade-up">
+        <div class="consult-icon ci-blue">💻</div>
+        <div class="consult-title">Technology Consulting</div>
+        <div class="consult-desc">Our team of experienced technology consultants specializes in IT strategy, digital transformation, software selection and implementation, cybersecurity, and cloud computing. We work closely with your organization to develop a comprehensive technology roadmap aligned with your business goals.</div>
+        <ul class="consult-features">
+          <li>IT Strategy & Roadmap Development</li>
+          <li>Digital Transformation Planning</li>
+          <li>Software Selection & Implementation</li>
+          <li>Cybersecurity Assessment & Solutions</li>
+          <li>Cloud Computing Strategy (AWS, Azure, GCP)</li>
+          <li>IT Infrastructure Optimization</li>
+        </ul>
+      </div>
+      <div class="consult-card fade-up">
+        <div class="consult-icon ci-orange">📈</div>
+        <div class="consult-title">Marketing Consultancy</div>
+        <div class="consult-desc">Our marketing consultancy services are geared towards helping businesses develop and execute effective marketing strategies that drive results. We specialize in market research, brand positioning, digital marketing, and customer engagement to help you achieve your objectives.</div>
+        <ul class="consult-features">
+          <li>Market Research & Analysis</li>
+          <li>Brand Positioning & Identity</li>
+          <li>Digital Marketing Strategy</li>
+          <li>Customer Engagement Planning</li>
+          <li>Social Media & Content Strategy</li>
+          <li>Marketing Campaign Execution</li>
+        </ul>
+      </div>
+      <div class="consult-card fade-up">
+        <div class="consult-icon ci-green">🔐</div>
+        <div class="consult-title">Cybersecurity Consulting</div>
+        <div class="consult-desc">Protect your organization with our cybersecurity expertise. We assess vulnerabilities, design security frameworks, and help implement best practices to keep your data and systems safe from modern threats.</div>
+        <ul class="consult-features">
+          <li>Security Risk Assessment</li>
+          <li>Vulnerability Analysis & Penetration Testing</li>
+          <li>Security Policy Development</li>
+          <li>Staff Security Awareness Training</li>
+          <li>Incident Response Planning</li>
+          <li>Compliance & Regulatory Guidance</li>
+        </ul>
+      </div>
+      <div class="consult-card fade-up">
+        <div class="consult-icon ci-purple">☁️</div>
+        <div class="consult-title">Cloud & DevOps Strategy</div>
+        <div class="consult-desc">Modernize your infrastructure with cloud-native solutions. We guide organizations through cloud migration, DevOps adoption, and building scalable, cost-efficient architectures on AWS, Azure, and Google Cloud.</div>
+        <ul class="consult-features">
+          <li>Cloud Migration Planning & Execution</li>
+          <li>AWS / Azure / GCP Architecture Design</li>
+          <li>DevOps & CI/CD Pipeline Setup</li>
+          <li>Cost Optimization & FinOps</li>
+          <li>Containerization (Docker, Kubernetes)</li>
+          <li>Infrastructure as Code (Terraform)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PROCESS -->
+<section class="section process-section">
+  <div class="section-inner">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">Our <span>Process</span></h2>
+    <p class="section-sub">A structured, results-driven approach tailored to your organization's needs.</p>
+    <div class="process-steps">
+      <div class="process-step fade-up">
+        <div class="process-num">1</div>
+        <div><div class="process-content-title">Discovery & Assessment</div><div class="process-content-desc">We start with a deep-dive consultation to understand your business goals, current challenges, and existing infrastructure. This forms the foundation of our recommendations.</div></div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="process-num">2</div>
+        <div><div class="process-content-title">Strategy & Roadmap</div><div class="process-content-desc">Our experts develop a customized technology or marketing roadmap with clear milestones, timelines, and measurable success metrics aligned with your business objectives.</div></div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="process-num">3</div>
+        <div><div class="process-content-title">Implementation Support</div><div class="process-content-desc">We work alongside your team during execution — whether that's implementing new software, launching marketing campaigns, or migrating to the cloud.</div></div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="process-num">4</div>
+        <div><div class="process-content-title">Review & Optimization</div><div class="process-content-desc">We continuously monitor progress against targets, gather feedback, and refine the strategy to ensure maximum impact and ROI for your organization.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="section form-section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:0;">
+      <div class="section-tag" style="display:inline-flex;">Request a Consultation</div>
+      <h2 class="section-title">Let's <span>Talk</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Tell us about your project and we'll get back to you within 24 hours.</p>
+    </div>
+    <div class="contact-form fade-up">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" id="fname" placeholder="Dawit">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" id="lname" placeholder="Abraham">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" id="email" placeholder="dave@company.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company / Organization</label>
+        <input class="form-input" type="text" id="company" placeholder="Your company name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Needed</label>
+        <select class="form-select form-input" id="service">
+          <option value="">Select a service...</option>
+          <option>Technology Consulting</option>
+          <option>Marketing Consultancy</option>
+          <option>Cybersecurity Consulting</option>
+          <option>Cloud & DevOps Strategy</option>
+          <option>Multiple Services</option>
+          <option>Not Sure — Need Guidance</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell Us About Your Project</label>
+        <textarea class="form-input" id="message" placeholder="Describe your challenges, goals, and timeline..."></textarea>
+      </div>
+      <button class="form-submit-btn" onclick="submitConsult()">Send Consultation Request →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-title">Ready to <span>Transform</span> Your Business?</div>
+  <div class="cta-banner-sub">Schedule a free 30-minute discovery call with our team and let's explore how we can help.</div>
+  <div class="cta-banner-btns">
+    <a href="mailto:contactus@afrocodershub.tech?subject=Consultation Request" class="btn-primary" style="padding:13px 28px;font-size:14px;border-radius:10px;">📧 Email Us Directly</a>
+    <a href="https://t.me/afrocoders" target="_blank" class="btn-ghost" style="padding:13px 28px;font-size:14px;border-radius:10px;">✈ Message on Telegram</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="AfroCodersHub" class="footer-logo"><div><div class="footer-brand-name">AfroCodersHub</div><div class="footer-brand-tag">Empowering Tech Solutions</div></div></div>
+        <div class="footer-desc">Empowering the next generation of African tech leaders through world-class education and consulting since 2017.</div>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
+          <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc">✉</a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://afrocodershub-lms.netlify.app/dashboard.html">Student Portal</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="#">Blog</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus@afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="portal-badge">🎓 Student Portal →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
+function submitConsult(){
+  var fn=document.getElementById('fname').value.trim(),ln=document.getElementById('lname').value.trim(),em=document.getElementById('email').value.trim(),co=document.getElementById('company').value.trim(),sv=document.getElementById('service').value,ms=document.getElementById('message').value.trim();
+  if(!fn||!em||!ms){alert('Please fill in your name, email, and message.');return;}
+  var s=encodeURIComponent('Consultation Request — '+sv+' — '+(fn+' '+ln).trim());
+  var b=encodeURIComponent('Name: '+(fn+' '+ln).trim()+'\nEmail: '+em+'\nCompany: '+co+'\nService: '+sv+'\n\nMessage:\n'+ms);
+  window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
+}
+</script>
+</body>
+</html>

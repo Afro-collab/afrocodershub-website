@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exclusive Services — AfroCodersHub</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:48px;}
+.svc-big-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;overflow:hidden;transition:all .25s;}
+.svc-big-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,0.2);}
+body.light .svc-big-card{background:#fff;border-color:rgba(0,0,0,0.08);box-shadow:0 2px 12px rgba(0,0,0,0.05);}
+body.light .svc-big-card:hover{border-color:rgba(255,107,26,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.1);}
+.svc-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;overflow:hidden;}
+.svc-thumb::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:20px 20px;}
+.sb-orange{background:linear-gradient(145deg,#0f0500,#2a1000);}
+.sb-blue{background:linear-gradient(145deg,#060e1f,#102652);}
+.sb-teal{background:linear-gradient(145deg,#031110,#092926);}
+.sb-purple{background:linear-gradient(145deg,#0d0820,#1e0f44);}
+.sb-amber{background:linear-gradient(145deg,#100900,#2a1f00);}
+.sb-red{background:linear-gradient(145deg,#100404,#2e0c0c);}
+body.light .sb-orange{background:linear-gradient(145deg,#fff7ed,#fed7aa);}
+body.light .sb-blue{background:linear-gradient(145deg,#dbeafe,#93c5fd);}
+body.light .sb-teal{background:linear-gradient(145deg,#ccfbf1,#5eead4);}
+body.light .sb-purple{background:linear-gradient(145deg,#ede9fe,#c4b5fd);}
+body.light .sb-amber{background:linear-gradient(145deg,#fef9c3,#fde047);}
+body.light .sb-red{background:linear-gradient(145deg,#fee2e2,#fca5a5);}
+.svc-body{padding:26px;}
+.svc-num{font-size:10px;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-family:'Space Mono',monospace;margin-bottom:8px;}
+.svc-title{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;margin-bottom:10px;line-height:1.2;}
+body.light .svc-title{color:#0D0D0D;}
+.svc-desc{font-size:13px;color:var(--text-muted);line-height:1.75;margin-bottom:20px;}
+body.light .svc-desc{color:#555;}
+.svc-cta{display:inline-flex;align-items:center;gap:7px;background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);padding:9px 18px;border-radius:9px;font-size:12px;font-weight:600;font-family:'Space Mono',monospace;text-decoration:none;transition:all .2s;}
+.svc-cta:hover{background:var(--orange);color:#fff;}
+.why-section{background:var(--bg2);border-top:1px solid var(--border2);}
+body.light .why-section{background:#F8F8F8;border-color:rgba(0,0,0,0.06);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:48px;}
+.why-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:22px;text-align:center;}
+body.light .why-card{background:#fff;border-color:rgba(0,0,0,0.08);}
+.why-icon{font-size:32px;margin-bottom:12px;}
+.why-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:6px;}
+body.light .why-title{color:#0D0D0D;}
+.why-desc{font-size:12px;color:var(--text-muted);line-height:1.65;}
+body.light .why-desc{color:#555;}
+.portfolio-section{background:var(--bg);border-top:1px solid var(--border2);}
+.portfolio-note{background:var(--orange-glow);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-top:40px;display:flex;align-items:center;gap:16px;}
+body.light .portfolio-note{background:rgba(255,107,26,0.06);}
+.portfolio-note-icon{font-size:28px;flex-shrink:0;}
+.portfolio-note-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:4px;color:var(--orange);}
+.portfolio-note-text{font-size:13px;color:var(--text-muted);line-height:1.65;}
+body.light .portfolio-note-text{color:#555;}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
+
+<nav id="mainnav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
+    <div><div class="nav-logo-name">AfroCodersHub</div><div class="nav-logo-sub">Empowering Tech Solutions</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trainings.html">Trainings</a>
+    <a href="consultancy.html">Consultancy</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="scholarship.html">Scholarship</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><div class="theme-toggle-thumb"></div></button>
+    <a href="index.html#contact" class="btn-primary">📞 Get a Quote</a>
+    <button class="hamburger" id="ham" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <div class="drawer-head-logo"><img src="logo.png" alt="Logo"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;">AfroCodersHub</div></div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="trainings.html">📚 Trainings</a>
+      <a href="consultancy.html">💼 Consultancy</a>
+      <a href="services.html" class="active">✨ Services</a>
+      <a href="scholarship.html">🎓 Scholarship</a>
+      <a href="#">📰 Blog</a>
+      <div class="drawer-divider"></div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
+    </div>
+    <div class="drawer-theme">
+      <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'Space Mono',monospace;margin-bottom:8px;">Theme</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:12px;color:var(--text-muted);">🌙 Dark</span>
+        <button class="theme-toggle" onclick="toggleTheme()"><div class="theme-toggle-thumb"></div></button>
+        <span style="font-size:12px;color:var(--text-muted);">☀️ Light</span>
+      </div>
+    </div>
+    <div class="drawer-foot"><a href="index.html#contact" class="btn-primary" style="width:100%;justify-content:center;">📞 Get a Quote</a></div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Exclusive Services</div>
+    <h1>Exclusive <span>Creative Services</span></h1>
+    <p class="page-hero-sub">Beyond tech training and consulting — AfroCodersHub offers professional design and creative services tailored to your brand, business, and special occasions.</p>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our Creative <span>Services</span></h2>
+    <p class="section-sub">Every service is crafted with attention to detail, brand consistency, and professional quality standards.</p>
+    <div class="services-grid">
+
+      <div class="svc-big-card fade-up">
+        <div class="svc-thumb sb-blue">🌐</div>
+        <div class="svc-body">
+          <div class="svc-num">Service 01</div>
+          <div class="svc-title">Website Design & Development</div>
+          <div class="svc-desc">Our team of skilled designers and developers creates stunning, functional websites tailored to your specific requirements — ensuring a captivating online presence for your brand or business. From landing pages to full web applications.</div>
+          <a href="mailto:contactus@afrocodershub.tech?subject=Website Design Inquiry" class="svc-cta">Request a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc-big-card fade-up">
+        <div class="svc-thumb sb-orange">🎉</div>
+        <div class="svc-body">
+          <div class="svc-num">Service 02</div>
+          <div class="svc-title">Customized Cards for Special Occasions</div>
+          <div class="svc-desc">Celebrate life's milestones with our personalized cards for weddings, birthdays, graduations, baby showers, and more. Our custom designs add a unique touch to your special moments, making them truly memorable and one-of-a-kind.</div>
+          <a href="mailto:contactus@afrocodershub.tech?subject=Custom Cards Inquiry" class="svc-cta">Request a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc-big-card fade-up">
+        <div class="svc-thumb sb-teal">💌</div>
+        <div class="svc-body">
+          <div class="svc-num">Service 03</div>
+          <div class="svc-title">Custom Postcards</div>
+          <div class="svc-desc">Send heartfelt messages to your loved ones with our custom postcards. Whether it's a simple greeting or a token of appreciation, our designs help you express yourself in style — perfect for personal and business use alike.</div>
+          <a href="mailto:contactus@afrocodershub.tech?subject=Custom Postcards Inquiry" class="svc-cta">Request a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc-big-card fade-up">
+        <div class="svc-thumb sb-purple">📖</div>
+        <div class="svc-body">
+          <div class="svc-num">Service 04</div>
+          <div class="svc-title">Book & Magazine Print Design</div>
+          <div class="svc-desc">Whether you're publishing a book or launching a magazine, we excel in crafting eye-catching designs for covers and interior content. We create layouts that grab attention and leave a lasting impression on your readers.</div>
+          <a href="mailto:contactus@afrocodershub.tech?subject=Print Design Inquiry" class="svc-cta">Request a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc-big-card fade-up">
+        <div class="svc-thumb sb-amber">🪧</div>
+        <div class="svc-body">
+          <div class="svc-num">Service 05</div>
+          <div class="svc-title">Banner & Signage Design</div>
+          <div class="svc-desc">Make a bold statement with eye-catching banners and signage. Whether it's for trade shows, events, storefronts, or digital displays — our designers create attention-grabbing visuals that effectively promote your brand and attract customers.</div>
+          <a href="mailto:contactus@afrocodershub.tech?subject=Banner Design Inquiry" class="svc-cta">Request a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc-big-card fade-up">
+        <div class="svc-thumb sb-red">📋</div>
+        <div class="svc-body">
+          <div class="svc-num">Service 06</div>
+          <div class="svc-title">Pamphlets & Brochures</div>
+          <div class="svc-desc">Need to promote your products or services? Our expert designers craft persuasive, visually compelling pamphlets and brochures that communicate your value proposition clearly and drive action from your target audience.</div>
+          <a href="mailto:contactus@afrocodershub.tech?subject=Brochure Design Inquiry" class="svc-cta">Request a Quote →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section why-section">
+  <div class="section-inner">
+    <div class="section-tag">Why AfroCodersHub</div>
+    <h2 class="section-title">Why Choose <span>Our Services</span></h2>
+    <p class="section-sub">We bring creativity, technology, and cultural understanding to every project.</p>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon">🎨</div>
+        <div class="why-title">Custom Designs</div>
+        <div class="why-desc">Every design is created from scratch — no templates. Tailored specifically to your brand identity and goals.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Fast Turnaround</div>
+        <div class="why-desc">We respect your deadlines. Most projects delivered within 3–7 business days depending on complexity.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🔁</div>
+        <div class="why-title">Unlimited Revisions</div>
+        <div class="why-desc">We iterate until you're 100% satisfied. Your vision is our priority — we won't stop until it's perfect.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Affordable Pricing</div>
+        <div class="why-desc">Professional quality at competitive prices. We offer packages for individuals, small businesses, and enterprises.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">Dedicated Support</div>
+        <div class="why-desc">Direct communication with your designer throughout the project. No middlemen, no confusion.</div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🌍</div>
+        <div class="why-title">Cultural Awareness</div>
+        <div class="why-desc">We bring cultural sensitivity and representation to our designs — making your brand inclusive and authentic.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO NOTE -->
+<section class="section portfolio-section">
+  <div class="section-inner">
+    <div class="section-tag">Our Work</div>
+    <h2 class="section-title">See Our <span>Portfolio</span></h2>
+    <p class="section-sub">We're constantly building and showcasing our creative work. Here's how to see it:</p>
+    <div class="portfolio-note fade-up">
+      <div class="portfolio-note-icon">📺</div>
+      <div>
+        <div class="portfolio-note-title">Check Our YouTube Channel</div>
+        <div class="portfolio-note-text">We showcase our design work, tutorials, and project walkthroughs on our YouTube channel. Subscribe to stay updated with our latest creative projects and tech content.</div>
+      </div>
+      <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" style="flex-shrink:0;background:var(--orange);color:#fff;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;">Visit Channel →</a>
+    </div>
+    <div class="portfolio-note fade-up" style="margin-top:16px;">
+      <div class="portfolio-note-icon">✈️</div>
+      <div>
+        <div class="portfolio-note-title">Join Our Telegram Community</div>
+        <div class="portfolio-note-text">Get direct access to our team, see work-in-progress designs, and request custom quotes through our active Telegram community. We respond within 24 hours.</div>
+      </div>
+      <a href="https://t.me/afrocoders" target="_blank" style="flex-shrink:0;background:var(--blue);color:#fff;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;">Join Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-title">Ready to Start Your <span>Project?</span></div>
+  <div class="cta-banner-sub">Tell us what you need and we'll send you a custom quote within 24 hours. No commitment required.</div>
+  <div class="cta-banner-btns">
+    <a href="mailto:contactus@afrocodershub.tech?subject=Service Inquiry" class="btn-primary" style="padding:13px 28px;font-size:14px;border-radius:10px;">📧 Get a Free Quote</a>
+    <a href="index.html#contact" class="btn-ghost" style="padding:13px 28px;font-size:14px;border-radius:10px;">📞 Contact Us →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="AfroCodersHub" class="footer-logo"><div><div class="footer-brand-name">AfroCodersHub</div><div class="footer-brand-tag">Empowering Tech Solutions</div></div></div>
+        <div class="footer-desc">Empowering the next generation of African tech leaders through world-class education and consulting since 2017.</div>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
+          <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc">✉</a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://afrocodershub-lms.netlify.app/dashboard.html">Student Portal</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="#">Blog</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus@afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="portal-badge">🎓 Student Portal →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
+</script>
+</body>
+</html>

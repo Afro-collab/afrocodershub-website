@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainings — AfroCodersHub</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:48px;}
+.course-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;overflow:hidden;transition:all .25s;}
+.course-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,0.25);}
+body.light .course-card{background:#fff;border-color:rgba(0,0,0,0.08);box-shadow:0 2px 12px rgba(0,0,0,0.05);}
+body.light .course-card:hover{border-color:rgba(255,107,26,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.1);}
+.course-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;overflow:hidden;}
+.course-thumb::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:22px 22px;}
+.th-amber{background:linear-gradient(145deg,#0f0900,#2a1a00);}
+.th-blue{background:linear-gradient(145deg,#060e1f,#102652);}
+.th-teal{background:linear-gradient(145deg,#031110,#092926);}
+.th-purple{background:linear-gradient(145deg,#0d0820,#1e0f44);}
+.th-red{background:linear-gradient(145deg,#100404,#2e0c0c);}
+.th-indigo{background:linear-gradient(145deg,#050818,#0d1540);}
+.th-green{background:linear-gradient(145deg,#041008,#0a2414);}
+.th-pink{background:linear-gradient(145deg,#100510,#280a28);}
+.th-sky{background:linear-gradient(145deg,#020d14,#062240);}
+body.light .th-amber{background:linear-gradient(145deg,#fef9c3,#fde047);}
+body.light .th-blue{background:linear-gradient(145deg,#dbeafe,#93c5fd);}
+body.light .th-teal{background:linear-gradient(145deg,#ccfbf1,#5eead4);}
+body.light .th-purple{background:linear-gradient(145deg,#ede9fe,#c4b5fd);}
+body.light .th-red{background:linear-gradient(145deg,#fee2e2,#fca5a5);}
+body.light .th-indigo{background:linear-gradient(145deg,#e0e7ff,#a5b4fc);}
+body.light .th-green{background:linear-gradient(145deg,#dcfce7,#86efac);}
+body.light .th-pink{background:linear-gradient(145deg,#fce7f3,#f9a8d4);}
+body.light .th-sky{background:linear-gradient(145deg,#e0f2fe,#7dd3fc);}
+.course-status{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;font-family:'Space Mono',monospace;text-transform:uppercase;z-index:1;}
+.status-live{background:rgba(45,202,110,0.15);color:#2DCA6E;border:1px solid rgba(45,202,110,0.3);}
+.status-upcoming{background:rgba(255,193,26,0.15);color:#FFC11A;border:1px solid rgba(255,193,26,0.3);}
+.course-body{padding:22px;}
+.course-cat{font-size:10px;color:var(--orange);letter-spacing:1px;text-transform:uppercase;font-family:'Space Mono',monospace;margin-bottom:6px;}
+.course-title{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:8px;line-height:1.2;}
+body.light .course-title{color:#0D0D0D;}
+.course-desc{font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:16px;}
+body.light .course-desc{color:#555;}
+.course-meta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px;}
+.course-meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-dim);}
+body.light .course-meta-item{color:#888;}
+.course-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border2);}
+body.light .course-footer{border-color:rgba(0,0,0,0.08);}
+.course-price-wrap{display:flex;flex-direction:column;}
+.course-price{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--orange);}
+.course-price-sub{font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;}
+body.light .course-price-sub{color:#888;}
+.course-enrol{background:var(--orange);color:#fff;border:none;padding:10px 22px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px;}
+.course-enrol:hover{background:var(--orange-dark);transform:translateY(-1px);}
+.features-section{background:var(--bg2);border-top:1px solid var(--border2);}
+body.light .features-section{background:#F8F8F8;border-color:rgba(0,0,0,0.06);}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:48px;}
+.feat-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:22px;}
+body.light .feat-card{background:#fff;border-color:rgba(0,0,0,0.08);}
+.feat-icon{font-size:28px;margin-bottom:12px;}
+.feat-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px;}
+body.light .feat-title{color:#0D0D0D;}
+.feat-desc{font-size:13px;color:var(--text-muted);line-height:1.65;}
+body.light .feat-desc{color:#555;}
+.filter-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:32px;}
+.filter-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text-muted);padding:7px 16px;border-radius:20px;font-size:12px;font-family:'Space Mono',monospace;cursor:pointer;transition:all .2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--orange-glow);border-color:var(--border);color:var(--orange);}
+body.light .filter-btn{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#555;}
+body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,107,26,0.08);border-color:rgba(255,107,26,0.2);color:var(--orange);}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
+
+<nav id="mainnav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
+    <div><div class="nav-logo-name">AfroCodersHub</div><div class="nav-logo-sub">Empowering Tech Solutions</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trainings.html" class="active">Trainings</a>
+    <a href="consultancy.html">Consultancy</a>
+    <a href="services.html">Services</a>
+    <a href="scholarship.html">Scholarship</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><div class="theme-toggle-thumb"></div></button>
+    <a href="https://afrocodershub-lms.netlify.app" class="btn-primary">🎓 Enrol Now</a>
+    <button class="hamburger" id="ham" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <div class="drawer-head-logo"><img src="logo.png" alt="Logo"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;">AfroCodersHub</div></div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="trainings.html" class="active">📚 Trainings</a>
+      <a href="consultancy.html">💼 Consultancy</a>
+      <a href="services.html">✨ Services</a>
+      <a href="scholarship.html">🎓 Scholarship</a>
+      <a href="#">📰 Blog</a>
+      <div class="drawer-divider"></div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
+    </div>
+    <div class="drawer-theme">
+      <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'Space Mono',monospace;margin-bottom:8px;">Theme</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:12px;color:var(--text-muted);">🌙 Dark</span>
+        <button class="theme-toggle" onclick="toggleTheme()"><div class="theme-toggle-thumb"></div></button>
+        <span style="font-size:12px;color:var(--text-muted);">☀️ Light</span>
+      </div>
+    </div>
+    <div class="drawer-foot"><a href="https://afrocodershub-lms.netlify.app" class="btn-primary" style="width:100%;justify-content:center;">🎓 Enrol Now</a></div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Trainings</div>
+    <h1>World-Class <span>Tech Training</span></h1>
+    <p class="page-hero-sub">Instructor-led live cohorts and self-paced programs designed to launch your tech career. All courses include Google Classroom access, recordings, and a certificate of completion.</p>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div>
+        <div class="section-tag">Our Curriculum</div>
+        <h2 class="section-title">All <span>Courses</span></h2>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCourses('all',this)">All Courses</button>
+        <button class="filter-btn" onclick="filterCourses('live',this)">Live Cohort</button>
+        <button class="filter-btn" onclick="filterCourses('self',this)">Self-Paced</button>
+      </div>
+    </div>
+    <div class="courses-grid" id="coursesGrid">
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-amber">📊<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Data & Analytics</div>
+          <div class="course-title">Data Science</div>
+          <div class="course-desc">Hands-on data science with Python, machine learning, and real-world datasets guided by certified experts. Build production-ready models and analytics pipelines.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 Nolawit Fantahun</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-blue">☁️<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Cloud Engineering</div>
+          <div class="course-title">AWS Cloud</div>
+          <div class="course-desc">AWS Solutions Architect & Cloud Engineering certification pathway with hands-on lab environments. Covers EC2, S3, Lambda, VPC, IAM and more.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 Ellon Solomon</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,500</div><div class="course-price-sub">Live · $1,000 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-teal">🌐<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Web Development</div>
+          <div class="course-title">Full Stack Web Dev</div>
+          <div class="course-desc">Build complete web applications from scratch. Covers HTML, CSS, JavaScript, React, Node.js, databases and deployment. Job-ready portfolio projects included.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 Akele Belaye</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-purple">🗄️<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Database & BI</div>
+          <div class="course-title">DBA / Power BI</div>
+          <div class="course-desc">Database administration with SQL Server combined with Microsoft Power BI data analytics. Build dashboards, write complex queries, and manage enterprise databases.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 Abraham & Mekdes</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-red">⚡<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Integration & API</div>
+          <div class="course-title">MuleSoft Integration</div>
+          <div class="course-desc">Master MuleSoft Anypoint Platform for enterprise API integration. Design, build, and manage APIs and integrations used by Fortune 500 companies.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-indigo">🖥️<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">IT Administration</div>
+          <div class="course-title">Microsoft 365 Admin</div>
+          <div class="course-desc">Comprehensive Microsoft 365 administration covering Exchange, SharePoint, Teams, Azure AD, security and compliance. Prepares you for MS-100 & MS-101 certifications.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$1,200</div><div class="course-price-sub">Live · $800 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumb th-green">👨‍👩‍👧<div class="course-status status-live">● Live</div></div>
+        <div class="course-body">
+          <div class="course-cat">Digital Literacy</div>
+          <div class="course-title">TechBridge for Parents</div>
+          <div class="course-desc">Empowering parents with digital literacy, online safety, and tech tools to support their children's learning in a technology-driven world.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 8 Weeks</div>
+            <div class="course-meta-item">📅 2× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">$600</div><div class="course-price-sub">Live · $400 Self-paced</div></div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-enrol">Enrol Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="upcoming">
+        <div class="course-thumb th-sky">☁️<div class="course-status status-upcoming">⏳ Coming Soon</div></div>
+        <div class="course-body">
+          <div class="course-cat">Cloud Engineering</div>
+          <div class="course-title">Azure Fundamentals</div>
+          <div class="course-desc">Microsoft Azure cloud fundamentals covering core services, pricing, compliance, and architecture. Prepares you for the AZ-900 certification exam.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 12 Weeks</div>
+            <div class="course-meta-item">📅 3× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">TBA</div><div class="course-price-sub">Register interest</div></div>
+            <a href="mailto:contactus@afrocodershub.tech?subject=Azure Interest" class="course-enrol">Get Notified →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card fade-up" data-type="upcoming">
+        <div class="course-thumb th-pink">🧑‍💻<div class="course-status status-upcoming">⏳ Coming Soon</div></div>
+        <div class="course-body">
+          <div class="course-cat">Youth Programs</div>
+          <div class="course-title">Youth Coders Program</div>
+          <div class="course-desc">Coding fundamentals for young learners aged 12-18. Teaches Python, web basics, and computational thinking through fun, project-based learning.</div>
+          <div class="course-meta-row">
+            <div class="course-meta-item">👤 AfroCodersHub Team</div>
+            <div class="course-meta-item">⏱ 10 Weeks</div>
+            <div class="course-meta-item">📅 2× per week</div>
+          </div>
+          <div class="course-footer">
+            <div class="course-price-wrap"><div class="course-price">TBA</div><div class="course-price-sub">Register interest</div></div>
+            <a href="mailto:contactus@afrocodershub.tech?subject=Youth Coders Interest" class="course-enrol">Get Notified →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section features-section">
+  <div class="section-inner">
+    <div class="section-tag">What's Included</div>
+    <h2 class="section-title">Every Course <span>Includes</span></h2>
+    <p class="section-sub">We go beyond just teaching — we set you up for real-world success.</p>
+    <div class="features-grid">
+      <div class="feat-card fade-up"><div class="feat-icon">🎥</div><div class="feat-title">Live Sessions</div><div class="feat-desc">3 live classes per week with your instructor via Google Meet. All sessions are recorded.</div></div>
+      <div class="feat-card fade-up"><div class="feat-icon">📚</div><div class="feat-title">Google Classroom</div><div class="feat-desc">Full access to slides, recordings, assignments, and resources in your Google Classroom.</div></div>
+      <div class="feat-card fade-up"><div class="feat-icon">🛠️</div><div class="feat-title">Real-World Projects</div><div class="feat-desc">Weeks 11-12 dedicated to building a portfolio project you can show employers.</div></div>
+      <div class="feat-card fade-up"><div class="feat-icon">🏆</div><div class="feat-title">Certificate</div><div class="feat-desc">AfroCodersHub Certificate of Completion upon finishing the program.</div></div>
+      <div class="feat-card fade-up"><div class="feat-icon">🤝</div><div class="feat-title">Weekly Q&A</div><div class="feat-desc">Dedicated 2-hour make-up and Q&A session every week to catch up or go deeper.</div></div>
+      <div class="feat-card fade-up"><div class="feat-icon">💬</div><div class="feat-title">Community Access</div><div class="feat-desc">Join our Telegram and Discord community of 500+ students and graduates.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="section-tag">Program Structure</div>
+    <h2 class="section-title">How It <span>Works</span></h2>
+    <p class="section-sub">Every course follows the same proven 12-week structure.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:48px;">
+      <div style="background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:24px;position:relative;" class="fade-up">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--orange);margin-bottom:14px;">1</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px;">Sign Up & Enrol</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.65;">Create your account on the LMS portal, choose your course and plan, then complete payment via Zelle or PayPal.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:24px;" class="fade-up">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--orange);margin-bottom:14px;">2</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px;">Admin Approves</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.65;">Within 24 hours, our admin team confirms your payment and emails your Google Classroom link and schedule.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:24px;" class="fade-up">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--orange);margin-bottom:14px;">3</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px;">Weeks 1–10: Learn</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.65;">Attend 3 live sessions per week + 1 weekly Q&A. Complete assignments and build hands-on skills.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:24px;" class="fade-up">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(45,202,110,0.12);border:1px solid rgba(45,202,110,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--green);margin-bottom:14px;">✓</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px;">Weeks 11–12: Build</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.65;">Complete your real-world capstone project and receive your Certificate of Completion from AfroCodersHub.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-title">Ready to <span>Start Learning?</span></div>
+  <div class="cta-banner-sub">Join hundreds of students already building their tech careers with AfroCodersHub. Scholarship options available.</div>
+  <div class="cta-banner-btns">
+    <a href="https://afrocodershub-lms.netlify.app" class="btn-primary" style="padding:13px 28px;font-size:14px;border-radius:10px;">🚀 Enrol Now — Sign Up Free</a>
+    <a href="scholarship.html" class="btn-ghost" style="padding:13px 28px;font-size:14px;border-radius:10px;">Apply for Scholarship →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="AfroCodersHub" class="footer-logo"><div><div class="footer-brand-name">AfroCodersHub</div><div class="footer-brand-tag">Empowering Tech Solutions</div></div></div>
+        <div class="footer-desc">Empowering the next generation of African tech leaders through world-class education and consulting since 2017.</div>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
+          <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc">✉</a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://afrocodershub-lms.netlify.app/dashboard.html">Student Portal</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="#">Blog</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus@afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a><a href="index.html#contact">📍 Sterling, Virginia, USA</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="portal-badge">🎓 Student Portal →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
+function filterCourses(type,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.course-card').forEach(c=>{
+    if(type==='all'||c.dataset.type===type){c.style.display='';}
+    else{c.style.display='none';}
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scholarship Program — AfroCodersHub</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.schol-hero-content{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:56px;}
+.schol-mission{background:var(--orange-glow);border:1px solid var(--border);border-radius:20px;padding:36px;}
+body.light .schol-mission{background:rgba(255,107,26,0.06);}
+.schol-mission-title{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin-bottom:16px;}
+body.light .schol-mission-title{color:#0D0D0D;}
+.schol-mission-text{font-size:15px;color:var(--text-muted);line-height:1.85;margin-bottom:20px;}
+body.light .schol-mission-text{color:#444;}
+.schol-highlights{display:flex;flex-direction:column;gap:12px;}
+.schol-highlight{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 16px;}
+body.light .schol-highlight{background:#fff;border-color:rgba(0,0,0,0.08);}
+.sh-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.sh-title{font-weight:600;font-size:14px;margin-bottom:3px;}
+body.light .sh-title{color:#0D0D0D;}
+.sh-desc{font-size:12px;color:var(--text-muted);line-height:1.55;}
+body.light .sh-desc{color:#555;}
+.courses-section{background:var(--bg2);border-top:1px solid var(--border2);}
+body.light .courses-section{background:#F8F8F8;border-color:rgba(0,0,0,0.06);}
+.schol-courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:48px;}
+.schol-course{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:22px;transition:all .2s;}
+.schol-course:hover{border-color:var(--border);transform:translateY(-2px);}
+body.light .schol-course{background:#fff;border-color:rgba(0,0,0,0.08);}
+body.light .schol-course:hover{border-color:rgba(255,107,26,0.2);}
+.sc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;}
+.sc-blue{background:rgba(74,158,255,0.1);border:1px solid rgba(74,158,255,0.2);}
+.sc-purple{background:rgba(155,109,255,0.1);border:1px solid rgba(155,109,255,0.2);}
+.sc-amber{background:rgba(255,193,26,0.1);border:1px solid rgba(255,193,26,0.2);}
+.sc-green{background:rgba(45,202,110,0.1);border:1px solid rgba(45,202,110,0.2);}
+.sc-red{background:rgba(255,74,74,0.1);border:1px solid rgba(255,74,74,0.2);}
+.sc-orange{background:var(--orange-glow);border:1px solid var(--border);}
+.sc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:5px;}
+body.light .sc-title{color:#0D0D0D;}
+.sc-desc{font-size:12px;color:var(--text-muted);line-height:1.6;}
+body.light .sc-desc{color:#555;}
+.eligibility-section{background:var(--bg);}
+.elig-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start;}
+.elig-card{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:32px;}
+body.light .elig-card{background:#fff;border-color:rgba(0,0,0,0.08);}
+.elig-title{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+body.light .elig-title{color:#0D0D0D;}
+.elig-list{display:flex;flex-direction:column;gap:10px;}
+.elig-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-muted);line-height:1.55;}
+body.light .elig-item{color:#444;}
+.elig-item-check{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:rgba(45,202,110,0.12);border:1px solid rgba(45,202,110,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--green);margin-top:1px;}
+.elig-item-x{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:rgba(255,74,74,0.1);border:1px solid rgba(255,74,74,0.2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--red);margin-top:1px;}
+.apply-section{background:var(--bg2);border-top:1px solid var(--border);}
+body.light .apply-section{background:#F8F8F8;border-color:rgba(0,0,0,0.06);}
+.apply-form{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:40px;max-width:700px;margin:48px auto 0;}
+body.light .apply-form{background:#fff;border-color:rgba(0,0,0,0.08);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.form-label{font-size:11px;font-weight:600;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;}
+body.light .form-label{color:#888;}
+.form-input{background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;}
+.form-input:focus{border-color:var(--border);}
+body.light .form-input{background:#F0F0F0;border-color:rgba(0,0,0,0.1);color:#0D0D0D;}
+body.light .form-input:focus{border-color:rgba(255,107,26,0.4);}
+textarea.form-input{resize:vertical;min-height:100px;}
+.form-submit-btn{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;}
+.form-submit-btn:hover{background:var(--orange-dark);}
+.contact-info-section{background:var(--bg);border-top:1px solid var(--border2);}
+.contact-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px;}
+.contact-info-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:20px;text-align:center;}
+body.light .contact-info-card{background:#fff;border-color:rgba(0,0,0,0.08);}
+.cic-icon{font-size:28px;margin-bottom:10px;}
+.cic-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'Space Mono',monospace;margin-bottom:6px;}
+body.light .cic-label{color:#888;}
+.cic-val{font-size:13px;font-weight:600;color:var(--orange);}
+.cic-val-m{font-size:12px;color:var(--text-muted);}
+body.light .cic-val-m{color:#555;}
+@media(max-width:768px){.schol-hero-content{grid-template-columns:1fr;}.elig-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
+
+<nav id="mainnav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
+    <div><div class="nav-logo-name">AfroCodersHub</div><div class="nav-logo-sub">Empowering Tech Solutions</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="trainings.html">Trainings</a>
+    <a href="consultancy.html">Consultancy</a>
+    <a href="services.html">Services</a>
+    <a href="scholarship.html" class="active">Scholarship</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><div class="theme-toggle-thumb"></div></button>
+    <a href="#apply" class="btn-primary">✨ Apply Now</a>
+    <button class="hamburger" id="ham" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <div class="drawer-head-logo"><img src="logo.png" alt="Logo"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;">AfroCodersHub</div></div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="trainings.html">📚 Trainings</a>
+      <a href="consultancy.html">💼 Consultancy</a>
+      <a href="services.html">✨ Services</a>
+      <a href="scholarship.html" class="active">🎓 Scholarship</a>
+      <a href="#">📰 Blog</a>
+      <div class="drawer-divider"></div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
+    </div>
+    <div class="drawer-theme">
+      <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'Space Mono',monospace;margin-bottom:8px;">Theme</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:12px;color:var(--text-muted);">🌙 Dark</span>
+        <button class="theme-toggle" onclick="toggleTheme()"><div class="theme-toggle-thumb"></div></button>
+        <span style="font-size:12px;color:var(--text-muted);">☀️ Light</span>
+      </div>
+    </div>
+    <div class="drawer-foot"><a href="#apply" class="btn-primary" style="width:100%;justify-content:center;">✨ Apply Now</a></div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Scholarship</div>
+    <h1>Scholarship <span>Program</span></h1>
+    <p class="page-hero-sub">At AfroCodersHub, we believe that financial barriers should never stop a motivated individual from accessing world-class tech education. Our scholarship program makes that possible.</p>
+  </div>
+</div>
+
+<!-- MISSION + HIGHLIGHTS -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="schol-hero-content">
+      <div class="fade-up">
+        <div class="section-tag">Our Commitment</div>
+        <h2 class="section-title">Equal Access to <span>Tech Education</span></h2>
+        <div class="schol-mission" style="margin-top:24px;">
+          <div class="schol-mission-title">🎯 What We Believe</div>
+          <div class="schol-mission-text">We're dedicated to providing opportunities for aspiring tech enthusiasts to excel in the ever-evolving world of IT. Through our scholarship program, we offer a diverse range of courses tailored to meet the demands of the modern tech landscape — empowering learners with cutting-edge skills and certifications.<br><br>What sets us apart is our commitment to flexibility and accessibility. All our training programs are conducted online, accommodating the schedules of both instructors and students while providing a seamless learning experience.</div>
+          <a href="#apply" class="btn-primary" style="display:inline-flex;padding:12px 24px;font-size:14px;border-radius:10px;">✨ Apply for Scholarship</a>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="schol-highlights">
+          <div class="schol-highlight">
+            <div class="sh-icon">🌍</div>
+            <div><div class="sh-title">Open to All Backgrounds</div><div class="sh-desc">Our scholarship is open to motivated individuals from any country, background, or experience level who demonstrate commitment to learning.</div></div>
+          </div>
+          <div class="schol-highlight">
+            <div class="sh-icon">💻</div>
+            <div><div class="sh-title">100% Online</div><div class="sh-desc">All programs are fully online — learn from anywhere in the world with just a laptop and internet connection.</div></div>
+          </div>
+          <div class="schol-highlight">
+            <div class="sh-icon">🏆</div>
+            <div><div class="sh-title">Certificate of Completion</div><div class="sh-desc">Graduates receive an AfroCodersHub Certificate of Completion to showcase on LinkedIn and to employers.</div></div>
+          </div>
+          <div class="schol-highlight">
+            <div class="sh-icon">🤝</div>
+            <div><div class="sh-title">Mentorship Included</div><div class="sh-desc">Scholarship recipients get access to dedicated mentorship from instructors throughout the program.</div></div>
+          </div>
+          <div class="schol-highlight">
+            <div class="sh-icon">📅</div>
+            <div><div class="sh-title">Flexible Scheduling</div><div class="sh-desc">Sessions are designed to accommodate working professionals and students with varied schedules across time zones.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES AVAILABLE -->
+<section class="section courses-section">
+  <div class="section-inner">
+    <div class="section-tag">Eligible Programs</div>
+    <h2 class="section-title">Courses Available <span>on Scholarship</span></h2>
+    <p class="section-sub">Our scholarship covers the following industry-relevant programs designed for the modern tech landscape.</p>
+    <div class="schol-courses-grid">
+      <div class="schol-course fade-up">
+        <div class="sc-icon sc-red">⚡</div>
+        <div class="sc-title">MuleSoft Integration</div>
+        <div class="sc-desc">Enterprise API integration and MuleSoft Anypoint Platform. In-demand skill at Fortune 500 companies.</div>
+      </div>
+      <div class="schol-course fade-up">
+        <div class="sc-icon sc-purple">🗄️</div>
+        <div class="sc-title">Database Administration</div>
+        <div class="sc-desc">SQL Server, database design, query optimization, and enterprise DBA skills.</div>
+      </div>
+      <div class="schol-course fade-up">
+        <div class="sc-icon sc-amber">📊</div>
+        <div class="sc-title">Power BI Data Analytics</div>
+        <div class="sc-desc">Microsoft Power BI for business intelligence, dashboards, and data visualization.</div>
+      </div>
+      <div class="schol-course fade-up">
+        <div class="sc-icon sc-green">🤖</div>
+        <div class="sc-title">Full Stack AI Development</div>
+        <div class="sc-desc">Build AI-powered full stack applications using modern frameworks and APIs.</div>
+      </div>
+      <div class="schol-course fade-up">
+        <div class="sc-icon sc-blue">☁️</div>
+        <div class="sc-title">AWS Cloud</div>
+        <div class="sc-desc">Amazon Web Services fundamentals to advanced cloud architecture and certification prep.</div>
+      </div>
+      <div class="schol-course fade-up">
+        <div class="sc-icon sc-orange">🌐</div>
+        <div class="sc-title">Full Stack Web Dev</div>
+        <div class="sc-desc">Complete web development from HTML/CSS to React and Node.js backend systems.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="section eligibility-section">
+  <div class="section-inner">
+    <div class="section-tag">Requirements</div>
+    <h2 class="section-title">Scholarship <span>Eligibility</span></h2>
+    <p class="section-sub">We want to support the most motivated candidates. Here's what we look for:</p>
+    <div class="elig-grid">
+      <div class="elig-card fade-up">
+        <div class="elig-title">✅ You Qualify If...</div>
+        <div class="elig-list">
+          <div class="elig-item"><div class="elig-item-check">✓</div>You demonstrate genuine passion for technology and learning</div>
+          <div class="elig-item"><div class="elig-item-check">✓</div>You face financial barriers to accessing quality tech education</div>
+          <div class="elig-item"><div class="elig-item-check">✓</div>You can commit to attending live sessions and completing assignments</div>
+          <div class="elig-item"><div class="elig-item-check">✓</div>You have a reliable internet connection and a device</div>
+          <div class="elig-item"><div class="elig-item-check">✓</div>You are 16 years or older</div>
+          <div class="elig-item"><div class="elig-item-check">✓</div>You are willing to participate in our community and give back</div>
+          <div class="elig-item"><div class="elig-item-check">✓</div>You can communicate in English (basic proficiency sufficient)</div>
+        </div>
+      </div>
+      <div class="fade-up" style="display:flex;flex-direction:column;gap:16px;">
+        <div class="elig-card">
+          <div class="elig-title">📋 What to Prepare</div>
+          <div class="elig-list">
+            <div class="elig-item"><div class="elig-item-check">✓</div>A short personal statement (why you want this scholarship)</div>
+            <div class="elig-item"><div class="elig-item-check">✓</div>Your chosen course from the eligible programs above</div>
+            <div class="elig-item"><div class="elig-item-check">✓</div>Your current employment/student status</div>
+            <div class="elig-item"><div class="elig-item-check">✓</div>How you plan to use the skills after completing the program</div>
+          </div>
+        </div>
+        <div style="background:var(--orange-glow);border:1px solid var(--border);border-radius:14px;padding:22px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--orange);margin-bottom:8px;">📌 Important Note</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">Scholarship spots are limited each cohort. We review applications on a rolling basis and notify successful candidates within 5–7 business days. Applying early improves your chances!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="section apply-section" id="apply">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-tag" style="display:inline-flex;">Apply Today</div>
+      <h2 class="section-title">Scholarship <span>Application</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Fill out the form below and our team will review your application within 5–7 business days.</p>
+    </div>
+    <div class="apply-form fade-up">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" id="fname" placeholder="Selam">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" id="lname" placeholder="Tesfaye">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" id="email" placeholder="selam@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" id="phone" placeholder="+1 (703) 000-0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Country</label>
+          <input class="form-input" type="text" id="country" placeholder="USA / Ethiopia / ...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Course You're Applying For</label>
+        <select class="form-input" id="course">
+          <option value="">Select a course...</option>
+          <option>MuleSoft Integration</option>
+          <option>Database Administration (DBA)</option>
+          <option>Power BI Data Analytics</option>
+          <option>Full Stack AI Development</option>
+          <option>AWS Cloud</option>
+          <option>Full Stack Web Development</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Current Status</label>
+        <select class="form-input" id="status">
+          <option value="">Select your status...</option>
+          <option>Student</option>
+          <option>Employed (Looking to Upskill)</option>
+          <option>Unemployed / Job Seeking</option>
+          <option>Freelancer / Self-Employed</option>
+          <option>Career Changer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Why Do You Deserve This Scholarship?</label>
+        <textarea class="form-input" id="statement" placeholder="Tell us about your background, why you're passionate about tech, and how this scholarship will change your life..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">How Will You Use These Skills?</label>
+        <textarea class="form-input" id="goals" placeholder="Describe your career goals and how completing this course will help you achieve them..."></textarea>
+      </div>
+      <button class="form-submit-btn" onclick="submitScholarship()">Submit Scholarship Application →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT INFO -->
+<section class="section contact-info-section">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-tag" style="display:inline-flex;">Reach Out</div>
+      <h2 class="section-title">Have <span>Questions?</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Our team is happy to answer any questions about the scholarship program. Reach us through any of these channels.</p>
+    </div>
+    <div class="contact-cards-grid fade-up">
+      <div class="contact-info-card">
+        <div class="cic-icon">✉️</div>
+        <div class="cic-label">Email</div>
+        <a href="mailto:contactus@afrocodershub.tech" class="cic-val" style="text-decoration:none;display:block;">contactus@afrocodershub.tech</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">📞</div>
+        <div class="cic-label">Phone (USA)</div>
+        <a href="tel:+17034009191" class="cic-val" style="text-decoration:none;display:block;">+1 (703)-400-9191</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">📞</div>
+        <div class="cic-label">Phone (Ethiopia)</div>
+        <a href="tel:+251900071080" class="cic-val" style="text-decoration:none;display:block;">+251 9 00 07 10 80</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">✈️</div>
+        <div class="cic-label">Telegram</div>
+        <a href="https://t.me/afrocoders" target="_blank" class="cic-val" style="text-decoration:none;display:block;">t.me/afrocoders</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">▶️</div>
+        <div class="cic-label">YouTube</div>
+        <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="cic-val" style="text-decoration:none;display:block;">@AfroCodersHub</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">📍</div>
+        <div class="cic-label">Address</div>
+        <div class="cic-val-m">Sterling, Virginia, USA</div>
+        <div class="cic-val-m" style="font-size:11px;margin-top:2px;">Mon–Fri 9AM–6PM EST</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-title">Let's Empower the <span>Next Generation</span></div>
+  <div class="cta-banner-sub">Join our community of 500+ students and start your tech journey today. Scholarship spots are limited — apply early.</div>
+  <div class="cta-banner-btns">
+    <a href="#apply" class="btn-primary" style="padding:13px 28px;font-size:14px;border-radius:10px;">✨ Apply for Scholarship</a>
+    <a href="trainings.html" class="btn-ghost" style="padding:13px 28px;font-size:14px;border-radius:10px;">Browse All Courses →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="AfroCodersHub" class="footer-logo"><div><div class="footer-brand-name">AfroCodersHub</div><div class="footer-brand-tag">Empowering Tech Solutions</div></div></div>
+        <div class="footer-desc">Empowering the next generation of African tech leaders through world-class education and consulting since 2017.</div>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
+          <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc">✉</a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://afrocodershub-lms.netlify.app/dashboard.html">Student Portal</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="#">Blog</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus@afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="portal-badge">🎓 Student Portal →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
+function submitScholarship(){
+  var fn=document.getElementById('fname').value.trim(),ln=document.getElementById('lname').value.trim(),em=document.getElementById('email').value.trim(),ph=document.getElementById('phone').value.trim(),co=document.getElementById('country').value.trim(),cr=document.getElementById('course').value,st=document.getElementById('status').value,ps=document.getElementById('statement').value.trim(),gl=document.getElementById('goals').value.trim();
+  if(!fn||!em||!cr||!ps){alert('Please fill in your name, email, course, and personal statement.');return;}
+  var s=encodeURIComponent('Scholarship Application — '+cr+' — '+(fn+' '+ln).trim());
+  var b=encodeURIComponent('SCHOLARSHIP APPLICATION\n\nName: '+(fn+' '+ln).trim()+'\nEmail: '+em+'\nPhone: '+ph+'\nCountry: '+co+'\nCourse: '+cr+'\nStatus: '+st+'\n\nWhy I Deserve This Scholarship:\n'+ps+'\n\nCareer Goals:\n'+gl);
+  window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
+}
+</script>
+</body>
+</html>
