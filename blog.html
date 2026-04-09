@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Blog — AfroCodersHub</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px;margin-top:48px;}
+.blog-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;overflow:hidden;transition:all .25s;text-decoration:none;display:block;color:inherit;}
+.blog-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,0.22);}
+body.light .blog-card{background:#fff;border-color:rgba(0,0,0,0.08);box-shadow:0 2px 12px rgba(0,0,0,0.05);}
+body.light .blog-card:hover{border-color:rgba(255,107,26,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.1);}
+.blog-card-thumb{width:100%;height:210px;object-fit:cover;display:block;}
+.blog-card-thumb-placeholder{height:210px;display:flex;align-items:center;justify-content:center;font-size:64px;}
+.blog-card-body{padding:24px;}
+.blog-card-cat{display:inline-flex;align-items:center;gap:5px;background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;margin-bottom:12px;}
+.blog-card-title{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;line-height:1.25;margin-bottom:10px;letter-spacing:-0.5px;}
+body.light .blog-card-title{color:#0D0D0D;}
+.blog-card-excerpt{font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;}
+body.light .blog-card-excerpt{color:#555;}
+.blog-card-meta{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border2);}
+body.light .blog-card-meta{border-color:rgba(0,0,0,0.08);}
+.blog-card-author{display:flex;align-items:center;gap:8px;}
+.blog-card-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--orange),#ff9a4a);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.blog-card-author-name{font-size:12px;font-weight:600;color:var(--text-muted);}
+body.light .blog-card-author-name{color:#555;}
+.blog-card-date{font-size:11px;color:var(--text-dim);font-family:'Space Mono',monospace;}
+body.light .blog-card-date{color:#888;}
+.blog-card-read{font-size:11px;color:var(--orange);font-family:'Space Mono',monospace;}
+.featured-badge{position:absolute;top:14px;left:14px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:0.5px;font-family:'Space Mono',monospace;}
+.blog-card-img-wrap{position:relative;}
+.newsletter-box{background:var(--orange-glow);border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center;margin-top:64px;}
+body.light .newsletter-box{background:rgba(255,107,26,0.06);}
+.newsletter-title{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;margin-bottom:8px;letter-spacing:-0.5px;}
+body.light .newsletter-title{color:#0D0D0D;}
+.newsletter-sub{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.7;}
+body.light .newsletter-sub{color:#444;}
+.newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto;}
+.newsletter-input{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:12px 16px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;}
+.newsletter-input:focus{border-color:var(--border);}
+body.light .newsletter-input{background:#F0F0F0;border-color:rgba(0,0,0,0.12);color:#0D0D0D;}
+@media(max-width:640px){.blog-grid{grid-template-columns:1fr;gap:20px;}.newsletter-form{flex-direction:column;}.blog-card-thumb{height:180px;}}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
+
+<nav id="mainnav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
+    <div><div class="nav-logo-name">AfroCodersHub</div><div class="nav-logo-sub">Empowering Tech Solutions</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" id="ddTrainings">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('ddTrainings')">Trainings <span class="arrow">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="trainings.html" onclick="closeAllDD()">📚 All Courses</a>
+        <a href="scholarship.html" onclick="closeAllDD()">🎓 Scholarships</a>
+      </div>
+    </div>
+    <a href="consultancy.html">Consultancy</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html" class="active">Blog</a>
+    <div class="nav-dropdown" id="ddMore">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('ddMore')">More <span class="arrow">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="services.html" onclick="closeAllDD()">✨ Exclusive Services</a>
+        <a href="scholarship.html" onclick="closeAllDD()">🎓 Scholarship</a>
+        <a href="index.html#contact" onclick="closeAllDD()">📞 Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-portal">🖥️ Student Portal</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><div class="theme-toggle-thumb"></div></button>
+    <a href="https://afrocodershub-lms.netlify.app" class="btn-primary">🎓 Enrol Now</a>
+    <button class="hamburger" id="ham" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-bg" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <div class="drawer-head-logo"><img src="logo.png" alt="Logo"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;">AfroCodersHub</div></div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="index.html">🏠 Home</a>
+      <a href="trainings.html">📚 Trainings</a>
+      <div class="drawer-sub">
+        <a href="trainings.html">All Courses</a>
+        <a href="scholarship.html">Scholarships</a>
+      </div>
+      <a href="consultancy.html">💼 Consultancy</a>
+      <a href="services.html">✨ Services</a>
+      <a href="blog.html" class="active">📰 Blog</a>
+      <div class="drawer-divider"></div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
+    </div>
+    <div class="drawer-theme">
+      <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'Space Mono',monospace;margin-bottom:8px;">Theme</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:12px;color:var(--text-muted);">🌙 Dark</span>
+        <button class="theme-toggle" onclick="toggleTheme()"><div class="theme-toggle-thumb"></div></button>
+        <span style="font-size:12px;color:var(--text-muted);">☀️ Light</span>
+      </div>
+    </div>
+    <div class="drawer-foot"><a href="https://afrocodershub-lms.netlify.app" class="btn-primary" style="width:100%;justify-content:center;">🎓 Enrol Now</a></div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Blog</div>
+    <h1>AfroCodersHub <span>Blog</span></h1>
+    <p class="page-hero-sub">Insights, guides, and stories about African tech, career growth, diversity in STEM, and the future of coding. Written by our community, for our community.</p>
+  </div>
+</div>
+
+<!-- BLOG POSTS -->
+<section class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:8px;">
+      <div>
+        <div class="section-tag">All Posts</div>
+        <h2 class="section-title">Latest <span>Articles</span></h2>
+      </div>
+      <div style="font-size:13px;color:var(--text-dim);font-family:'Space Mono',monospace;">4 articles</div>
+    </div>
+
+    <div class="blog-grid">
+
+      <!-- Post 1 — Featured -->
+      <a href="blog-empowering-women-stem.html" class="blog-card fade-up">
+        <div class="blog-card-img-wrap">
+          <div class="blog-card-thumb-placeholder" style="background:linear-gradient(145deg,#100410,#280828);">👩🏿‍💻</div>
+          <div class="featured-badge">Featured</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🌍 Diversity & STEM</div>
+          <div class="blog-card-title">AfroCoders HUB: Empowering Black Women in STEM</div>
+          <div class="blog-card-excerpt">In today's rapidly evolving world, the demand for diverse talent in STEM has never been greater. However, there remains a significant underrepresentation of Black girls in these critical areas...</div>
+          <div class="blog-card-meta">
+            <div class="blog-card-author">
+              <div class="blog-card-avatar">EB</div>
+              <div class="blog-card-author-name">Ezra Brookgashe</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="blog-card-date">Jul 2, 2024</div>
+              <div class="blog-card-read">2 min read</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 2 -->
+      <a href="blog-coding-future-ai.html" class="blog-card fade-up">
+        <div class="blog-card-img-wrap">
+          <div class="blog-card-thumb-placeholder" style="background:linear-gradient(145deg,#030e1a,#082840);">🤖</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🚀 Artificial Intelligence</div>
+          <div class="blog-card-title">Coding the Future: How Coders are Shaping the Rise of AI</div>
+          <div class="blog-card-excerpt">Remember those old sci-fi movies where robots took over the world? Forget that. The future of AI isn't about robot overlords — it's about coder-powered innovation...</div>
+          <div class="blog-card-meta">
+            <div class="blog-card-author">
+              <div class="blog-card-avatar">EB</div>
+              <div class="blog-card-author-name">Ezra Brookgashe</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="blog-card-date">Jun 27, 2024</div>
+              <div class="blog-card-read">2 min read</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 3 -->
+      <a href="blog-landing-it-job-usa.html" class="blog-card fade-up">
+        <div class="blog-card-img-wrap">
+          <div class="blog-card-thumb-placeholder" style="background:linear-gradient(145deg,#041008,#0a2414);">💼</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🎯 Career Guide</div>
+          <div class="blog-card-title">Landing a Job in IT as a Junior Specialist in the USA: A Guide for Afro Coders</div>
+          <div class="blog-card-excerpt">Are you an aspiring IT professional looking to kickstart your career in the USA? Landing a job as a junior specialist can be challenging — here's your complete roadmap...</div>
+          <div class="blog-card-meta">
+            <div class="blog-card-author">
+              <div class="blog-card-avatar">EB</div>
+              <div class="blog-card-author-name">Ezra Brookgashe</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="blog-card-date">Jun 19, 2024</div>
+              <div class="blog-card-read">4 min read</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 4 -->
+      <a href="blog-black-representation-tech.html" class="blog-card fade-up">
+        <div class="blog-card-img-wrap">
+          <div class="blog-card-thumb-placeholder" style="background:linear-gradient(145deg,#0a0800,#201800);">✊🏿</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">💡 Industry Insights</div>
+          <div class="blog-card-title">Black Representation in the TECH Industry: Breaking Barriers and Driving Innovation</div>
+          <div class="blog-card-excerpt">In the fast-paced world of technology, diversity and inclusion have become crucial topics. Black professionals face numerous challenges — yet many are breaking barriers and paving the way...</div>
+          <div class="blog-card-meta">
+            <div class="blog-card-author">
+              <div class="blog-card-avatar">EB</div>
+              <div class="blog-card-author-name">Ezra Brookgashe</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="blog-card-date">Jun 13, 2024</div>
+              <div class="blog-card-read">2 min read</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-box fade-up">
+      <div class="newsletter-title">📬 Stay in the Loop</div>
+      <div class="newsletter-sub">Get the latest articles, course updates, and community news delivered to your inbox. No spam — just good content.</div>
+      <div class="newsletter-form">
+        <input class="newsletter-input" type="email" id="nlEmail" placeholder="your@email.com">
+        <a href="#" class="btn-primary" style="white-space:nowrap;padding:12px 22px;" onclick="subscribeNL(event)">Subscribe →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-title">Ready to <span>Start Learning?</span></div>
+  <div class="cta-banner-sub">Join hundreds of students already building their tech careers with AfroCodersHub.</div>
+  <div class="cta-banner-btns">
+    <a href="trainings.html" class="btn-primary" style="padding:13px 28px;font-size:14px;border-radius:10px;">🚀 Browse All Courses</a>
+    <a href="scholarship.html" class="btn-ghost" style="padding:13px 28px;font-size:14px;border-radius:10px;">Apply for Scholarship →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="AfroCodersHub" class="footer-logo"><div><div class="footer-brand-name">AfroCodersHub</div><div class="footer-brand-tag">Empowering Tech Solutions</div></div></div>
+        <div class="footer-desc">Empowering the next generation of African tech leaders through world-class education and consulting since 2017.</div>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
+          <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc">✉</a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://afrocodershub-lms.netlify.app/dashboard.html">Student Portal</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="blog.html">Blog</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus@afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="portal-badge">🎓 Student Portal →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrawer();closeAllDD();}});
+function toggleDD(id){var dd=document.getElementById(id);var isOpen=dd.classList.contains('open');closeAllDD();if(!isOpen)dd.classList.add('open');}
+function closeAllDD(){document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open');});}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdown'))closeAllDD();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
+function subscribeNL(e){e.preventDefault();var em=document.getElementById('nlEmail').value.trim();if(!em){alert('Please enter your email.');return;}window.location.href='mailto:contactus@afrocodershub.tech?subject=Newsletter Signup&body=Please add me to the AfroCodersHub newsletter.%0A%0AEmail: '+em;}
+</script>
+</body>
+</html>
