@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfroCodersHub — Empowering Tech Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange:#FF6B1A; --orange-dark:#CC4A00;
+  --orange-glow:rgba(255,107,26,0.15); --orange-glow2:rgba(255,107,26,0.07);
+  --bg:#0A0A0C; --bg2:#111115; --bg3:#18181F; --bg4:#1F1F28;
+  --card:#141419; --card2:#1A1A22;
+  --border:rgba(255,107,26,0.18); --border2:rgba(255,255,255,0.07);
+  --text:#F0EDE8; --text-muted:#8A8795; --text-dim:#55535E;
+  --green:#2DCA6E; --blue:#4A9EFF; --purple:#9B6DFF;
+}
+body.light {
+  --bg:#F4F2EE; --bg2:#EDEAE4; --bg3:#E4E0D8; --bg4:#D8D3C8;
+  --card:#FFFFFF; --card2:#F8F5F0;
+  --border:rgba(255,107,26,0.28); --border2:rgba(0,0,0,0.09);
+  --text:#1A1814; --text-muted:#5A5650; --text-dim:#9A9590;
+  --orange-glow:rgba(255,107,26,0.1); --orange-glow2:rgba(255,107,26,0.04);
+  --green:#18A858; --blue:#1A6FCC; --purple:#6B3FCC;
+}
+/* Theme toggle — identical to LMS */
+.theme-toggle{width:44px;height:26px;background:var(--bg3);border:1px solid var(--border2);border-radius:13px;cursor:pointer;display:flex;align-items:center;padding:3px;transition:background .3s,border .3s;position:relative;flex-shrink:0;}
+.theme-toggle-thumb{width:20px;height:20px;border-radius:50%;background:var(--text-dim);transition:transform .3s,background .3s;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
+body.light .theme-toggle{background:rgba(255,107,26,0.12);border-color:var(--border);}
+body.light .theme-toggle-thumb{transform:translateX(18px);background:var(--orange);}
+.theme-toggle-thumb::before{content:'🌙';}
+body.light .theme-toggle-thumb::before{content:'☀️';}
+/* Light mode overrides */
+body.light nav{box-shadow:0 1px 12px rgba(0,0,0,0.08);}
+body.light .service-card{background:var(--card);}
+body.light .course-card{background:var(--card);}
+body.light .testimonial-card{background:var(--card);}
+body.light .hero-main-card{background:var(--card);}
+body.light .hero-floating-badge{background:var(--card2);}
+body.light .hero-course-item{background:var(--bg3);}
+body.light .hero-xp-bar{background:var(--bg3);}
+body.light .about-main-img{background:var(--card);}
+body.light .about-stat-card{background:var(--bg3);}
+body.light .about-pillar{background:var(--card);}
+body.light footer{background:var(--bg2);}
+body.light .footer-social a{background:var(--bg3);}
+body.light .ct-amber{background:linear-gradient(145deg,#fef9c3,#fde047);}
+body.light .ct-blue{background:linear-gradient(145deg,#dbeafe,#93c5fd);}
+body.light .ct-teal{background:linear-gradient(145deg,#ccfbf1,#5eead4);}
+body.light .ct-purple{background:linear-gradient(145deg,#ede9fe,#c4b5fd);}
+body.light .ct-red{background:linear-gradient(145deg,#fee2e2,#fca5a5);}
+body.light .ct-indigo{background:linear-gradient(145deg,#e0e7ff,#a5b4fc);}
+body.light .ct-pink{background:linear-gradient(145deg,#fce7f3,#f9a8d4);}
+body.light .hero-bg-grid{background-image:linear-gradient(rgba(255,107,26,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,26,0.05) 1px,transparent 1px);background-size:60px 60px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(20,20,25,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:80px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);}
+.nav-logo-icon{width:52px;height:52px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,107,26,0.5);box-shadow:0 0 18px rgba(255,107,26,0.3);flex-shrink:0;}
+.nav-logo-icon img{width:100%;height:100%;object-fit:cover;}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;letter-spacing:-0.5px;}
+.nav-logo-sub{font-size:10px;color:var(--orange);letter-spacing:1.5px;font-family:'Space Mono',monospace;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 14px;border-radius:6px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:var(--bg3);}
+.nav-links a.active{color:var(--orange);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.btn-primary{background:var(--orange);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--text-muted);border:1px solid var(--border2);padding:9px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.btn-outline:hover{color:var(--text);border-color:var(--border);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px;cursor:pointer;width:36px;height:36px;justify-content:center;}
+.hamburger span{display:block;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center;background:var(--bg);}
+.hero-bg{position:absolute;inset:0;pointer-events:none;}
+.hero-bg-glow1{position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,26,0.12) 0%,transparent 65%);}
+.hero-bg-glow2{position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,255,0.07) 0%,transparent 65%);}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,26,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,26,0.03) 1px,transparent 1px);background-size:60px 60px;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px;font-family:'Space Mono',monospace;}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-2px;margin-bottom:20px;}
+.hero h1 .line2{color:var(--orange);}
+.hero-sub{font-size:16px;color:var(--text-muted);max-width:480px;margin-bottom:36px;line-height:1.7;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
+.hero-stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--text);}
+.hero-stat-num span{color:var(--orange);}
+.hero-stat-label{font-size:12px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;}
+.hero-visual{position:relative;}
+.hero-card-stack{position:relative;height:480px;}
+.hero-main-card{position:absolute;top:40px;left:20px;right:0;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 40px 80px rgba(0,0,0,0.4);}
+.hero-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.hero-card-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--orange),#ff9a4a);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;}
+.hero-card-name{font-weight:600;font-size:14px;}
+.hero-card-sub{font-size:11px;color:var(--text-dim);}
+.hero-xp-bar{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:14px;}
+.hero-xp-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:8px;}
+.hero-xp-label span:last-child{color:var(--orange);font-weight:600;}
+.hero-xp-track{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.hero-xp-fill{height:100%;width:55%;background:linear-gradient(90deg,var(--orange),#ffaa70);border-radius:3px;animation:fillBar 2s ease 0.5s both;}
+@keyframes fillBar{from{width:0%;}to{width:55%;}}
+.hero-courses{display:flex;flex-direction:column;gap:8px;}
+.hero-course-item{display:flex;align-items:center;gap:10px;background:var(--bg3);border-radius:9px;padding:10px 12px;}
+.hero-course-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.hero-course-title{font-size:12px;font-weight:500;flex:1;}
+.hero-course-badge{font-size:10px;padding:2px 8px;border-radius:10px;font-family:'Space Mono',monospace;}
+.badge-active{background:rgba(45,202,110,0.15);color:var(--green);}
+.badge-locked{background:var(--bg4);color:var(--text-dim);}
+.hero-floating-badge{position:absolute;top:0;right:20px;background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:14px 18px;box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.hfb-label{font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;margin-bottom:4px;}
+.hfb-value{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--orange);}
+.hfb-sub{font-size:11px;color:var(--text-muted);}
+
+/* ── SECTION COMMONS ── */
+section{padding:96px 2rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px;font-family:'Space Mono',monospace;}
+.section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px;}
+.section-title span{color:var(--orange);}
+.section-sub{font-size:15px;color:var(--text-muted);max-width:560px;line-height:1.7;}
+
+/* ── SERVICES ── */
+.services-section{background:var(--bg2);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:48px;}
+.service-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px;transition:all .25s;cursor:pointer;text-decoration:none;display:block;color:inherit;}
+.service-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.service-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
+.si-orange{background:var(--orange-glow);border:1px solid var(--border);}
+.si-blue{background:rgba(74,158,255,0.1);border:1px solid rgba(74,158,255,0.2);}
+.si-green{background:rgba(45,202,110,0.1);border:1px solid rgba(45,202,110,0.2);}
+.si-purple{background:rgba(155,109,255,0.1);border:1px solid rgba(155,109,255,0.2);}
+.service-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;}
+.service-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:16px;}
+.service-link{font-size:12px;color:var(--orange);font-family:'Space Mono',monospace;display:flex;align-items:center;gap:6px;}
+
+/* ── COURSES ── */
+.courses-section{background:var(--bg);}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:48px;}
+.course-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;overflow:hidden;transition:all .25s;}
+.course-card:hover{border-color:var(--border);transform:translateY(-3px);}
+.course-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden;}
+.ct-amber{background:linear-gradient(145deg,#0f0900,#2a1a00);}
+.ct-blue{background:linear-gradient(145deg,#060e1f,#102652);}
+.ct-green{background:linear-gradient(145deg,#030f08,#0a2414);}
+.ct-purple{background:linear-gradient(145deg,#0d0820,#1e0f44);}
+.ct-teal{background:linear-gradient(145deg,#031110,#092926);}
+.ct-red{background:linear-gradient(145deg,#100404,#2e0c0c);}
+.ct-indigo{background:linear-gradient(145deg,#050818,#0d1540);}
+.ct-pink{background:linear-gradient(145deg,#100510,#280a28);}
+.course-thumb::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:24px 24px;}
+.course-body{padding:18px;}
+.course-cat{font-size:10px;color:var(--orange);letter-spacing:1px;text-transform:uppercase;font-family:'Space Mono',monospace;margin-bottom:6px;}
+.course-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px;}
+.course-meta{font-size:12px;color:var(--text-dim);margin-bottom:14px;}
+.course-footer{display:flex;align-items:center;justify-content:space-between;}
+.course-price{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--orange);}
+.course-btn{background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);padding:6px 14px;border-radius:7px;font-size:12px;font-family:'Space Mono',monospace;cursor:pointer;text-decoration:none;transition:all .2s;}
+.course-btn:hover{background:var(--orange);color:#fff;}
+
+/* ── ABOUT ── */
+.about-section{background:var(--bg2);border-top:1px solid var(--border2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:16px;}
+.about-visual{position:relative;}
+.about-main-img{width:100%;border-radius:20px;background:var(--card);border:1px solid var(--border);padding:32px;display:flex;flex-direction:column;gap:16px;}
+.about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.about-stat-card{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:18px;}
+.about-stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--orange);}
+.about-stat-label{font-size:11px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;}
+.about-mission{background:var(--orange-glow);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.about-mission-title{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--orange);margin-bottom:8px;}
+.about-mission-text{font-size:13px;color:var(--text-muted);line-height:1.7;}
+.about-content{display:flex;flex-direction:column;gap:24px;}
+.about-content p{font-size:15px;color:var(--text-muted);line-height:1.8;}
+.about-pillars{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.about-pillar{display:flex;align-items:flex-start;gap:14px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:16px;}
+.about-pillar-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.about-pillar-title{font-weight:600;font-size:14px;margin-bottom:3px;}
+.about-pillar-desc{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{background:var(--bg);border-top:1px solid var(--border2);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:48px;}
+.testimonial-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:24px;transition:border-color .2s;}
+.testimonial-card:hover{border-color:var(--border);}
+.testimonial-stars{color:var(--orange);font-size:14px;margin-bottom:14px;letter-spacing:2px;}
+.testimonial-text{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;font-style:italic;}
+.testimonial-author{display:flex;align-items:center;gap:10px;}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--orange),#ff9a4a);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0;}
+.testimonial-name{font-weight:600;font-size:13px;}
+.testimonial-role{font-size:11px;color:var(--text-dim);}
+
+/* ── CTA ── */
+.cta-section{background:var(--bg2);border-top:1px solid var(--border);}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center;}
+.cta-inner .section-title{font-size:clamp(28px,4vw,48px);}
+.cta-inner .section-sub{margin:0 auto 40px;max-width:500px;}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-large{padding:14px 32px;font-size:15px;border-radius:10px;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border2);padding:60px 2rem 32px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--border2);margin-bottom:28px;}
+.footer-brand-name{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;margin-bottom:8px;}
+.footer-brand-desc{font-size:13px;color:var(--text-muted);line-height:1.7;max-width:260px;margin-bottom:20px;}
+.footer-social{display:flex;gap:10px;}
+.footer-social a{width:36px;height:36px;border-radius:9px;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;transition:all .2s;}
+.footer-social a:hover{background:var(--orange-glow);border-color:var(--border);}
+.footer-col-title{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);font-family:'Space Mono',monospace;margin-bottom:16px;}
+.footer-col a{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.footer-col a:hover{color:var(--orange);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.footer-bottom-left{font-size:12px;color:var(--text-dim);}
+.footer-bottom-left span{color:var(--orange);}
+.footer-portal-link{display:inline-flex;align-items:center;gap:8px;background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);padding:6px 14px;border-radius:8px;font-size:12px;font-family:'Space Mono',monospace;text-decoration:none;transition:all .2s;}
+.footer-portal-link:hover{background:var(--orange);color:#fff;}
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;}
+.mobile-drawer.open{display:block;}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);}
+.drawer-panel{position:absolute;left:0;top:0;bottom:0;width:280px;background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto;}
+.mobile-drawer.open .drawer-panel{transform:translateX(0);}
+.drawer-header{padding:20px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;}
+.drawer-close{background:none;border:none;color:var(--text-muted);font-size:20px;cursor:pointer;}
+.drawer-nav{padding:12px;flex:1;}
+.drawer-nav a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:9px;font-size:14px;color:var(--text-muted);text-decoration:none;transition:all .18s;margin-bottom:2px;}
+.drawer-nav a:hover,.drawer-nav a.active{background:var(--orange-glow);color:var(--orange);}
+.drawer-divider{height:1px;background:var(--border2);margin:8px 0;}
+.drawer-footer{padding:16px 20px;border-top:1px solid var(--border2);}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .hero-visual{display:none;}
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  nav{padding:0 1rem;height:68px;}
+  .nav-links{display:none;}
+  .nav-right .btn-outline{display:none;}
+  .hamburger{display:flex;}
+  section{padding:64px 1rem;}
+  .hero{min-height:auto;padding:80px 0 60px;}
+  .hero h1{font-size:36px;letter-spacing:-1px;}
+  .hero-stats{gap:20px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .cta-buttons{flex-direction:column;align-items:center;}
+  #contact .section-inner > div{grid-template-columns:1fr !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon"><img src="Afro_Coders_Hub_Logo_Transparent_BG__3_.png" alt="AfroCodersHub Logo"></div>
+    <div>
+      <div class="nav-logo-text">AfroCodersHub</div>
+      <div class="nav-logo-sub">Empowering Tech Solutions</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="active">Home</a>
+    <a href="trainings.html">Trainings</a>
+    <a href="consultancy.html">Consultancy</a>
+    <a href="services.html">Services</a>
+    <a href="scholarship.html">Scholarship</a>
+    <a href="blog.html">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-outline">Student Portal</a>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch theme">
+      <div class="theme-toggle-thumb" id="themeThumb"></div>
+    </button>
+    <a href="https://afrocodershub-lms.netlify.app" class="btn-primary">🎓 Enrol Now</a>
+    <button class="hamburger" id="hamburger" onclick="openDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ MOBILE DRAWER ══ -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-backdrop" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;">AfroCodersHub</div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="#" class="active">🏠 Home</a>
+      <a href="trainings.html">📚 Trainings</a>
+      <a href="consultancy.html">💼 Consultancy</a>
+      <a href="services.html">✨ Services</a>
+      <a href="scholarship.html">🎓 Scholarship</a>
+      <a href="blog.html">📰 Blog</a>
+      <div class="drawer-divider"></div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
+      <div class="drawer-divider"></div>
+      <div style="padding:10px 12px;">
+        <div style="font-size:11px;color:var(--text-dim);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;font-family:'Space Mono',monospace;">Theme</div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:12px;color:var(--text-muted);">🌙 Dark</span>
+          <button class="theme-toggle" onclick="toggleTheme()" style="margin:0;">
+            <div class="theme-toggle-thumb"></div>
+          </button>
+          <span style="font-size:12px;color:var(--text-muted);">☀️ Light</span>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <a href="https://afrocodershub-lms.netlify.app" class="btn-primary" style="width:100%;justify-content:center;">🎓 Enrol Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-bg-glow1"></div>
+    <div class="hero-bg-glow2"></div>
+    <div class="hero-bg-grid"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag"><div class="hero-tag-dot"></div> Est. 2017 · Sterling, Virginia</div>
+      <h1>Empowering<br><span class="line2">African Tech</span><br>Leaders</h1>
+      <p class="hero-sub">World-class tech training, consulting, and digital solutions — built for the next generation of African coders and tech entrepreneurs.</p>
+
+      <!-- USER JOURNEY CTAs — Option A -->
+      <div class="hero-ctas">
+        <a href="https://afrocodershub-lms.netlify.app/index.html" class="btn-primary btn-large">🚀 Start Learning — Sign Up Free</a>
+        <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-outline btn-large">Already a student? Sign In →</a>
+      </div>
+
+      <!-- User journey steps -->
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:32px;">
+        <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:5px 12px;">
+          <span style="width:18px;height:18px;border-radius:50%;background:var(--orange);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span>
+          <span style="font-size:11px;color:var(--text-muted);">Sign Up Free</span>
+        </div>
+        <span style="color:var(--text-dim);font-size:12px;">→</span>
+        <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:5px 12px;">
+          <span style="width:18px;height:18px;border-radius:50%;background:var(--orange);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span>
+          <span style="font-size:11px;color:var(--text-muted);">Choose a Course</span>
+        </div>
+        <span style="color:var(--text-dim);font-size:12px;">→</span>
+        <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:5px 12px;">
+          <span style="width:18px;height:18px;border-radius:50%;background:var(--orange);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span>
+          <span style="font-size:11px;color:var(--text-muted);">Pay & Get Access</span>
+        </div>
+        <span style="color:var(--text-dim);font-size:12px;">→</span>
+        <div style="display:flex;align-items:center;gap:6px;background:var(--orange-glow);border:1px solid var(--border);border-radius:20px;padding:5px 12px;">
+          <span style="width:18px;height:18px;border-radius:50%;background:var(--green);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✓</span>
+          <span style="font-size:11px;color:var(--orange);">Start Learning!</span>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num"><span>500</span>+</div>
+          <div class="hero-stat-label">Students Trained</div>
+        </div>
+        <div>
+          <div class="hero-stat-num"><span>8</span>+</div>
+          <div class="hero-stat-label">Courses</div>
+        </div>
+        <div>
+          <div class="hero-stat-num"><span>7</span>+</div>
+          <div class="hero-stat-label">Years Active</div>
+        </div>
+        <div>
+          <div class="hero-stat-num"><span>4.9</span>★</div>
+          <div class="hero-stat-label">Student Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Hero image — female coder -->
+      <div style="position:relative;">
+        <div style="position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(255,107,26,0.15),rgba(74,158,255,0.08));z-index:1;pointer-events:none;"></div>
+        <img src="hero-female.png" alt="AfroCodersHub Student" style="width:100%;height:460px;object-fit:cover;object-position:center top;border-radius:24px;border:1px solid var(--border);display:block;">
+        <!-- Floating badge top right -->
+        <div class="hero-floating-badge" style="position:absolute;top:16px;right:16px;z-index:2;">
+          <div class="hfb-label">Top Rated</div>
+          <div class="hfb-value">4.9★</div>
+          <div class="hfb-sub">Student Reviews</div>
+        </div>
+        <!-- Floating XP card bottom left -->
+        <div style="position:absolute;bottom:16px;left:16px;z-index:2;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;min-width:200px;backdrop-filter:blur(10px);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div class="hero-card-avatar">LD</div>
+            <div>
+              <div class="hero-card-name">Lilu Dawit</div>
+              <div class="hero-card-sub">AWS Cloud · Live Cohort</div>
+            </div>
+          </div>
+          <div class="hero-xp-bar">
+            <div class="hero-xp-label">
+              <span style="font-size:11px;color:var(--text-dim);">Level 1 — New Coder</span>
+              <span>110 / 200 XP</span>
+            </div>
+            <div class="hero-xp-track"><div class="hero-xp-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services-section" id="services">
+  <div class="section-inner">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Everything You Need to<br><span>Succeed in Tech</span></h2>
+    <p class="section-sub">From world-class training programs to expert consulting and custom digital solutions.</p>
+    <div class="services-grid">
+      <a href="trainings.html" class="service-card fade-up">
+        <div class="service-icon si-orange">🎓</div>
+        <div class="service-title">Tech Training Programs</div>
+        <div class="service-desc">Instructor-led live cohorts and self-paced courses in Data Science, AWS, Full Stack Dev, MuleSoft, and more.</div>
+        <div class="service-link">Explore Courses →</div>
+      </a>
+      <a href="consultancy.html" class="service-card fade-up">
+        <div class="service-icon si-blue">💼</div>
+        <div class="service-title">Technology Consulting</div>
+        <div class="service-desc">IT strategy, digital transformation, cybersecurity, cloud computing, and software implementation guidance.</div>
+        <div class="service-link">Learn More →</div>
+      </a>
+      <a href="services.html" class="service-card fade-up">
+        <div class="service-icon si-green">🌐</div>
+        <div class="service-title">Web Development</div>
+        <div class="service-desc">Custom websites and digital platforms built by our expert team — from concept to deployment.</div>
+        <div class="service-link">See Our Work →</div>
+      </a>
+      <a href="scholarship.html" class="service-card fade-up">
+        <div class="service-icon si-purple">✨</div>
+        <div class="service-title">Scholarship Program</div>
+        <div class="service-desc">We believe in equal access to tech education. Apply for our scholarship and start your journey for free.</div>
+        <div class="service-link">Apply Now →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COURSES ══ -->
+<section class="courses-section" id="courses">
+  <div class="section-inner">
+    <div class="section-tag">Our Curriculum</div>
+    <h2 class="section-title">Industry-Ready<br><span>Courses</span></h2>
+    <p class="section-sub">Each program is designed with real-world skills and certification pathways in mind.</p>
+    <div class="courses-grid">
+      <div class="course-card fade-up">
+        <div class="course-thumb ct-amber">📊</div>
+        <div class="course-body">
+          <div class="course-cat">Data & Analytics</div>
+          <div class="course-title">Data Science</div>
+          <div class="course-meta">👤 Nolawit Fantahun · ⏱ 12 Weeks</div>
+          <div class="course-footer">
+            <div class="course-price">$1,200</div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-btn">Enrol →</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-thumb ct-blue">☁️</div>
+        <div class="course-body">
+          <div class="course-cat">Cloud Engineering</div>
+          <div class="course-title">AWS Cloud</div>
+          <div class="course-meta">👤 Ellon Solomon · ⏱ 12 Weeks</div>
+          <div class="course-footer">
+            <div class="course-price">$1,500</div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-btn">Enrol →</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-thumb ct-teal">🌐</div>
+        <div class="course-body">
+          <div class="course-cat">Web Development</div>
+          <div class="course-title">Full Stack Web Dev</div>
+          <div class="course-meta">👤 Akele Belaye · ⏱ 12 Weeks</div>
+          <div class="course-footer">
+            <div class="course-price">$1,200</div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-btn">Enrol →</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-thumb ct-purple">🗄️</div>
+        <div class="course-body">
+          <div class="course-cat">Database & BI</div>
+          <div class="course-title">DBA / Power BI</div>
+          <div class="course-meta">👤 Abraham & Mekdes · ⏱ 12 Weeks</div>
+          <div class="course-footer">
+            <div class="course-price">$1,200</div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-btn">Enrol →</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-thumb ct-red">⚡</div>
+        <div class="course-body">
+          <div class="course-cat">Integration & API</div>
+          <div class="course-title">MuleSoft</div>
+          <div class="course-meta">👤 AfroCodersHub Team · ⏱ 12 Weeks</div>
+          <div class="course-footer">
+            <div class="course-price">$1,200</div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-btn">Enrol →</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card fade-up">
+        <div class="course-thumb ct-indigo">🖥️</div>
+        <div class="course-body">
+          <div class="course-cat">IT Administration</div>
+          <div class="course-title">Microsoft 365 Admin</div>
+          <div class="course-meta">👤 AfroCodersHub Team · ⏱ 12 Weeks</div>
+          <div class="course-footer">
+            <div class="course-price">$1,200</div>
+            <a href="https://afrocodershub-lms.netlify.app" class="course-btn">Enrol →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="trainings.html" class="btn-primary">View All Courses →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <!-- Male coder image -->
+        <div style="position:relative;border-radius:20px;overflow:hidden;">
+          <img src="hero-male.png" alt="AfroCodersHub Developer" style="width:100%;height:420px;object-fit:cover;object-position:center top;border-radius:20px;border:1px solid var(--border);display:block;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(10,10,12,0.85) 100%);border-radius:20px;"></div>
+          <!-- Stats overlay at bottom -->
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div class="about-stat-card">
+                <div class="about-stat-num">500+</div>
+                <div class="about-stat-label">Students</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-num">7+</div>
+                <div class="about-stat-label">Years</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-num">8+</div>
+                <div class="about-stat-label">Courses</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-num">4.9★</div>
+                <div class="about-stat-label">Rating</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content fade-up">
+        <div>
+          <div class="section-tag">About Us</div>
+          <h2 class="section-title">Passionate About<br><span>Tech Education</span></h2>
+        </div>
+        <p>At Afro-Coders Hub, we have a passion for digital technology and strive to be at the forefront of innovation. Since our founding in 2017, we have been dedicated to providing our clients with the best possible technology solutions.</p>
+        <p>Our team of experienced professionals works tirelessly to stay on top of the latest trends and technologies, ensuring that each of our students receives the most up-to-date and effective digital education.</p>
+        <div class="about-pillars">
+          <div class="about-pillar">
+            <div class="about-pillar-icon">🌍</div>
+            <div>
+              <div class="about-pillar-title">Community First</div>
+              <div class="about-pillar-desc">Building a strong network of African tech professionals across the globe.</div>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="about-pillar-icon">🏆</div>
+            <div>
+              <div class="about-pillar-title">Industry Standards</div>
+              <div class="about-pillar-desc">All courses are aligned with current industry certifications and job market demands.</div>
+            </div>
+          </div>
+          <div class="about-pillar">
+            <div class="about-pillar-icon">🤝</div>
+            <div>
+              <div class="about-pillar-title">Continuous Support</div>
+              <div class="about-pillar-desc">From enrollment to job placement — our team is with you every step of the way.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-tag">Student Reviews</div>
+    <h2 class="section-title">What Our <span>Students Say</span></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Their expertise and support made the learning process efficient and fostered personal development. Highly recommended to anyone looking to break into tech."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">HM</div>
+          <div>
+            <div class="testimonial-name">Henon Mekonen</div>
+            <div class="testimonial-role">CS Major · Data Science Graduate</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The AWS Cloud course gave me everything I needed to pass my certification. The live sessions with the instructor were invaluable."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AT</div>
+          <div>
+            <div class="testimonial-name">Abel Tadesse</div>
+            <div class="testimonial-role">AWS Solutions Architect</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I went from knowing nothing about databases to landing a DBA role in 6 months. AfroCodersHub changed my career trajectory completely."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="testimonial-name">Sara Kebede</div>
+            <div class="testimonial-role">Database Administrator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="section-inner cta-inner">
+    <div class="section-tag" style="margin:0 auto 16px;">Start Today</div>
+    <h2 class="section-title">Ready to Start Your<br><span>Tech Journey?</span></h2>
+    <p class="section-sub">Join hundreds of students already learning with AfroCodersHub. Live cohorts, self-paced options, and scholarship programs available.</p>
+    <div class="cta-buttons">
+      <a href="trainings.html" class="btn-primary btn-large">🚀 Browse All Courses</a>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="btn-outline btn-large">Sign In to Portal →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" style="background:var(--bg3);border-top:1px solid var(--border2);padding:96px 2rem;">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <div class="fade-up">
+        <div class="section-tag">Get in Touch</div>
+        <h2 class="section-title">We're Here<br><span>to Help</span></h2>
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:32px;">Whether you're looking to enrol in a course, need consulting services, or want to collaborate — our team is ready to assist you.</p>
+        <!-- Contact cards -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="https://www.afrocodershub.tech" target="_blank" style="display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--border)'" onmouseout="this.style.borderColor='var(--border2)'">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🌐</div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Website</div>
+              <div style="font-size:13px;color:var(--orange);">www.afrocodershub.tech</div>
+            </div>
+          </a>
+          <a href="mailto:contactus@afrocodershub.tech" style="display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--border)'" onmouseout="this.style.borderColor='var(--border2)'">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✉️</div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Email</div>
+              <div style="font-size:13px;color:var(--orange);">contactus@afrocodershub.tech</div>
+            </div>
+          </a>
+          <div style="display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 18px;">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📞</div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Phone</div>
+              <a href="tel:+17034009191" style="display:block;font-size:13px;color:var(--text-muted);text-decoration:none;">+1 (703)-400-9191</a>
+              <a href="tel:+251900071080" style="display:block;font-size:13px;color:var(--text-muted);text-decoration:none;">+251 9 00 07 10 80</a>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 18px;">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📍</div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Address</div>
+              <div style="font-size:13px;color:var(--text-muted);">Sterling, Virginia, USA</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <a href="https://t.me/afrocoders" target="_blank" style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;text-decoration:none;color:inherit;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--border)'" onmouseout="this.style.borderColor='var(--border2)'">
+              <div style="width:38px;height:38px;border-radius:10px;background:rgba(74,158,255,0.1);border:1px solid rgba(74,158,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✈️</div>
+              <div>
+                <div style="font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Telegram</div>
+                <div style="font-size:12px;color:var(--blue);">@afrocoders</div>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;text-decoration:none;color:inherit;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--border)'" onmouseout="this.style.borderColor='var(--border2)'">
+              <div style="width:38px;height:38px;border-radius:10px;background:rgba(255,74,74,0.1);border:1px solid rgba(255,74,74,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">▶️</div>
+              <div>
+                <div style="font-size:10px;color:var(--text-dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">YouTube</div>
+                <div style="font-size:12px;color:#FF4A4A;">@AfroCodersHub</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Working hours + quick contact form -->
+      <div class="fade-up" style="display:flex;flex-direction:column;gap:18px;">
+        <!-- Working hours card -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:18px;display:flex;align-items:center;gap:8px;">🕘 Working Hours</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--bg3);border-radius:9px;">
+              <div style="font-size:13px;font-weight:500;">Monday – Friday</div>
+              <div style="font-size:12px;color:var(--orange);font-family:'Space Mono',monospace;font-weight:700;">9AM – 6PM EST</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--bg3);border-radius:9px;">
+              <div style="font-size:13px;font-weight:500;">Saturday</div>
+              <div style="font-size:12px;color:var(--orange);font-family:'Space Mono',monospace;font-weight:700;">10AM – 3PM EST</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--bg3);border-radius:9px;">
+              <div style="font-size:13px;font-weight:500;">Sunday</div>
+              <div style="font-size:12px;color:var(--text-dim);font-family:'Space Mono',monospace;">Closed</div>
+            </div>
+          </div>
+        </div>
+        <!-- Quick message card -->
+        <div style="background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px;">Send Us a Message</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">We'll get back to you within 24 hours.</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <input type="text" placeholder="Your Name" style="background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:11px 14px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--border)'" onblur="this.style.borderColor='var(--border2)'">
+            <input type="email" placeholder="Your Email" style="background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:11px 14px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--border)'" onblur="this.style.borderColor='var(--border2)'">
+            <textarea placeholder="Your Message" rows="4" style="background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:11px 14px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color .2s;" onfocus="this.style.borderColor='var(--border)'" onblur="this.style.borderColor='var(--border2)'"></textarea>
+            <button onclick="sendContactEmail()" style="background:var(--orange);color:#fff;border:none;padding:12px;border-radius:9px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;" onmouseover="this.style.background='var(--orange-dark)'" onmouseout="this.style.background='var(--orange)'">Send Message →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <img src="Afro_Coders_Hub_Logo_Transparent_BG__3_.png" alt="AfroCodersHub Logo" style="width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,107,26,0.4);">
+          <div>
+            <div class="footer-brand-name">AfroCodersHub</div>
+            <div style="font-size:10px;color:var(--orange);font-family:'Space Mono',monospace;letter-spacing:1px;">EMPOWERING TECH SOLUTIONS</div>
+          </div>
+        </div>
+        <div class="footer-brand-desc">Empowering the next generation of African tech leaders through world-class education and consulting since 2017.</div>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" title="YouTube">▶</a>
+          <a href="https://t.me/afrocoders" target="_blank" title="Telegram">✈</a>
+          <a href="mailto:contactus@afrocodershub.tech" title="Email">✉</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Training</div>
+        <div class="footer-col">
+          <a href="trainings.html">All Courses</a>
+          <a href="scholarship.html">Scholarships</a>
+          <a href="https://afrocodershub-lms.netlify.app/dashboard.html">Student Portal</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-col">
+          <a href="#about">About Us</a>
+          <a href="consultancy.html">Consultancy</a>
+          <a href="services.html">Exclusive Services</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-col">
+          <a href="mailto:contactus@afrocodershub.tech">✉ contactus@afrocodershub.tech</a>
+          <a href="tel:+17034009191">📞 +1 (703)-400-9191</a>
+          <a href="tel:+251900071080">📞 +251 9 00 07 10 80</a>
+          <a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a>
+          <a href="https://www.youtube.com/@AfroCodersHub" target="_blank">▶ @AfroCodersHub</a>
+          <a href="#contact">📍 Sterling, Virginia, USA</a>
+          <a href="#contact" style="color:var(--text-dim);">🕘 Mon–Fri 9AM–6PM EST</a>
+          <a href="#contact" style="color:var(--text-dim);">🕙 Sat 10AM–3PM EST</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions · Sterling, Virginia, USA</div>
+      <a href="https://afrocodershub-lms.netlify.app/dashboard.html" class="footer-portal-link">🎓 Student Portal →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile drawer
+function openDrawer() {
+  document.getElementById('mobileDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  document.getElementById('mobileDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// Scroll fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Theme toggle — identical to LMS dashboard
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light');
+  localStorage.setItem('ach-theme', isLight ? 'light' : 'dark');
+}
+// Restore saved theme on load
+(function() {
+  if (localStorage.getItem('ach-theme') === 'light') {
+    document.body.classList.add('light');
+  }
+})();
+
+// Contact form
+function sendContactEmail() {
+  var inputs = document.querySelectorAll('#contact input, #contact textarea');
+  var name = inputs[0].value.trim();
+  var email = inputs[1].value.trim();
+  var message = inputs[2].value.trim();
+  if (!name || !email || !message) { alert('Please fill in all fields.'); return; }
+  var subject = encodeURIComponent('Message from ' + name + ' — AfroCodersHub Website');
+  var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+  window.location.href = 'mailto:contactus@afrocodershub.tech?subject=' + subject + '&body=' + body;
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').style.boxShadow = 
+    window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+});
+</script>
+</body>
+</html>
