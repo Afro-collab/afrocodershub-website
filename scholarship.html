@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Scholarship Program — AfroCodersHub</title>
 <link rel="stylesheet" href="shared.css">
 <style>
@@ -77,18 +77,28 @@ body.light .cic-label{color:#888;}
 body.light .cic-val-m{color:#555;}
 @media(max-width:768px){.schol-hero-content{grid-template-columns:1fr;}.elig-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
 
-/* ── NAV DROPDOWNS ── */
+/* ── NAV DROPDOWNS — click-based, mobile + desktop ── */
 .nav-dropdown{position:relative;display:flex;align-items:center;}
-.nav-dropdown-trigger{color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 13px;border-radius:7px;transition:all .2s;font-weight:500;cursor:pointer;white-space:nowrap;}
-.nav-dropdown-trigger:hover,.nav-dropdown:hover .nav-dropdown-trigger{color:var(--text);background:var(--bg3);}
-body.light .nav-dropdown-trigger:hover,body.light .nav-dropdown:hover .nav-dropdown-trigger{color:#0D0D0D;background:#F0F0F0;}
-.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--card2);border:1px solid var(--border2);border-radius:12px;padding:6px;min-width:190px;box-shadow:0 16px 48px rgba(0,0,0,0.4);z-index:200;}
-body.light .nav-dropdown-menu{background:#FFFFFF;border-color:rgba(0,0,0,0.1);box-shadow:0 16px 48px rgba(0,0,0,0.12);}
-.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;}
-.nav-dropdown-menu a{color:var(--text-muted);text-decoration:none;font-size:13px;padding:9px 13px;border-radius:8px;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:8px;}
+.nav-dropdown-trigger{color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 13px;border-radius:7px;transition:all .2s;font-weight:500;cursor:pointer;white-space:nowrap;background:none;border:none;font-family:inherit;display:flex;align-items:center;gap:4px;}
+.nav-dropdown-trigger:hover{color:var(--text);background:var(--bg3);}
+.nav-dropdown-trigger .arrow{font-size:9px;transition:transform .2s;display:inline-block;}
+.nav-dropdown.open .nav-dropdown-trigger .arrow{transform:rotate(180deg);}
+.nav-dropdown-trigger.active-page{color:var(--orange);}
+body.light .nav-dropdown-trigger{color:#555;}
+body.light .nav-dropdown-trigger:hover{color:#0D0D0D;background:#F0F0F0;}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;background:var(--card2);border:1px solid var(--border2);border-radius:14px;padding:6px;min-width:200px;box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:300;animation:ddFade .15s ease;}
+@keyframes ddFade{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+body.light .nav-dropdown-menu{background:#FFFFFF;border-color:rgba(0,0,0,0.1);box-shadow:0 20px 60px rgba(0,0,0,0.15);}
+.nav-dropdown.open .nav-dropdown-menu{display:flex;flex-direction:column;}
+.nav-dropdown-menu a{color:var(--text-muted);text-decoration:none;font-size:13px;padding:10px 14px;border-radius:9px;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:9px;min-height:40px;}
 .nav-dropdown-menu a:hover{color:var(--orange);background:var(--orange-glow);}
-body.light .nav-dropdown-menu a{color:#555;}
+body.light .nav-dropdown-menu a{color:#444;}
 body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,107,26,0.08);}
+/* Drawer dropdown for mobile */
+.drawer-sub{display:flex;flex-direction:column;gap:2px;padding-left:20px;margin-top:2px;}
+.drawer-sub a{padding:9px 12px;font-size:13px;color:var(--text-dim);border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:all .15s;}
+.drawer-sub a:hover{color:var(--orange);background:var(--orange-glow);}
+body.light .drawer-sub a{color:#888;}
 </style>
 </head>
 <body>
@@ -101,22 +111,22 @@ body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,10
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <div class="nav-dropdown">
-    <a href="trainings.html" class="nav-dropdown-trigger">Trainings ▾</a>
+    <div class="nav-dropdown" id="ddTrainings">
+    <button class="nav-dropdown-trigger" onclick="toggleDD('ddTrainings')">Trainings <span class="arrow">▾</span></button>
     <div class="nav-dropdown-menu">
-      <a href="trainings.html">📚 All Courses</a>
-      <a href="scholarship.html">🎓 Scholarships</a>
+      <a href="trainings.html" onclick="closeAllDD()">📚 All Courses</a>
+      <a href="scholarship.html" onclick="closeAllDD()">🎓 Scholarships</a>
     </div>
   </div>
     <a href="consultancy.html">Consultancy</a>
     <a href="services.html">Services</a>
     <a href="scholarship.html" class="active">Scholarship</a>
-    <div class="nav-dropdown">
-    <a href="#" class="nav-dropdown-trigger">More ▾</a>
+    <div class="nav-dropdown" id="ddMore">
+    <button class="nav-dropdown-trigger" onclick="toggleDD('ddMore')">More <span class="arrow">▾</span></button>
     <div class="nav-dropdown-menu">
-      <a href="services.html">✨ Exclusive Services</a>
-      <a href="#">📝 Blog</a>
-      <a href="index.html#contact">📞 Contact</a>
+      <a href="services.html" onclick="closeAllDD()">✨ Exclusive Services</a>
+      <a href="#" onclick="closeAllDD()">📝 Blog</a>
+      <a href="index.html#contact" onclick="closeAllDD()">📞 Contact</a>
     </div>
   </div>
   </div>
@@ -138,10 +148,19 @@ body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,10
     <div class="drawer-nav">
       <a href="index.html">🏠 Home</a>
       <a href="trainings.html">📚 Trainings</a>
+      <div class="drawer-sub">
+        <a href="trainings.html">All Courses</a>
+        <a href="scholarship.html">Scholarships</a>
+      </div>
       <a href="consultancy.html">💼 Consultancy</a>
       <a href="services.html">✨ Services</a>
       <a href="scholarship.html" class="active">🎓 Scholarship</a>
       <a href="#">📰 Blog</a>
+      <div class="drawer-sub">
+        <a href="services.html">✨ Exclusive Services</a>
+        <a href="#">📝 Blog</a>
+        <a href="index.html#contact">📞 Contact</a>
+      </div>
       <div class="drawer-divider"></div>
       <a href="https://afrocodershub-lms.netlify.app/dashboard.html">🖥️ Student Portal</a>
     </div>
@@ -432,6 +451,21 @@ body.light .nav-dropdown-menu a:hover{color:var(--orange);background:rgba(255,10
 </footer>
 
 <script>
+function toggleDD(id){
+  var dd = document.getElementById(id);
+  var isOpen = dd.classList.contains('open');
+  closeAllDD();
+  if(!isOpen) dd.classList.add('open');
+}
+function closeAllDD(){
+  document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open');});
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.nav-dropdown')) closeAllDD();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape') closeAllDD();
+});
 function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
 (function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
 function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}

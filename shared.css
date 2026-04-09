@@ -129,3 +129,137 @@ body.light .cta-banner-sub{color:#444;}
 /* Responsive */
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){nav{padding:0 1.25rem;height:66px;}.nav-links,.btn-portal{display:none;}.hamburger{display:flex;}.section{padding:60px 1.25rem;}.page-hero{padding:48px 1.25rem 40px;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}.cta-banner{padding:48px 1.25rem;}.cta-banner-btns{flex-direction:column;align-items:center;}}
+
+/* ══ MOBILE RESPONSIVENESS — iOS & Android ══ */
+
+/* Touch targets — minimum 44px for all interactive elements */
+.nav-links a, .nav-dropdown-trigger, .btn-primary, .btn-ghost, .btn-portal,
+.drawer-nav a, .drawer-sub a, .footer-col a, .footer-soc {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.footer-col a { min-height: 36px; }
+
+/* Prevent text size adjustment on iOS rotation */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Smooth scrolling on iOS */
+body { -webkit-overflow-scrolling: touch; }
+
+/* Remove tap highlight on iOS */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Better touch for buttons */
+button, a { touch-action: manipulation; }
+
+/* ── TABLET (768px–960px) ── */
+@media(max-width:960px) {
+  .nav-links { gap: 0; }
+  .nav-links a, .nav-dropdown-trigger { font-size: 12px; padding: 6px 10px; }
+  nav { padding: 0 1.5rem; }
+  .page-hero { padding: 56px 1.5rem 48px; }
+  .page-hero h1 { font-size: clamp(28px,5vw,44px); }
+  .section { padding: 72px 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ── MOBILE (≤640px) ── */
+@media(max-width:640px) {
+  /* Nav */
+  nav { padding: 0 1rem; height: 64px; }
+  .nav-links, .btn-portal, .btn-ghost { display: none !important; }
+  .hamburger { display: flex !important; }
+  .nav-logo-name { font-size: 14px; }
+  .nav-logo-sub { display: none; }
+  .nav-logo-img { width: 40px; height: 40px; }
+
+  /* Hero */
+  .hero { min-height: auto; padding: 80px 0 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 1rem; }
+  .hero-img-wrap { display: none; }
+  h1.hero-title { font-size: 34px; letter-spacing: -1.5px; }
+  .hero-desc { font-size: 14px; }
+  .hero-ctas { flex-direction: column; gap: 10px; }
+  .hero-ctas a { width: 100%; justify-content: center; text-align: center; }
+  .btn-lg, .btn-hero { padding: 13px 20px; font-size: 14px; }
+  .hero-journey { gap: 5px; }
+  .jstep { padding: 5px 10px; }
+  .jstep-label { font-size: 10px; }
+  .hero-stats { gap: 16px; }
+  .stat-num { font-size: 22px; }
+
+  /* Sections */
+  .section { padding: 56px 1rem; }
+  .section-title { font-size: 26px; letter-spacing: -1px; }
+
+  /* Services grid */
+  .services-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Courses grid */
+  .courses-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-photo { height: 300px; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+
+  /* Testimonials */
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .cc-social-row { grid-template-columns: 1fr 1fr; }
+
+  /* CTA */
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .cta-btns a { justify-content: center; text-align: center; }
+  .cta-banner { padding: 48px 1rem; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  footer { padding: 40px 1rem 24px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+
+  /* Page hero */
+  .page-hero { padding: 48px 1rem 40px; }
+  .page-hero h1 { font-size: 28px; letter-spacing: -1px; }
+
+  /* CTA banner */
+  .cta-banner-title { font-size: 24px; }
+
+  /* Drawer */
+  .drawer-panel { width: 100%; max-width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+}
+
+/* ── SMALL PHONES (≤375px) ── */
+@media(max-width:375px) {
+  h1.hero-title { font-size: 28px; }
+  .section-title { font-size: 22px; }
+  .hero-journey { display: none; }
+  .hero-stats { gap: 12px; }
+  .stat-num { font-size: 18px; }
+}
+
+/* ── SAFE AREA for iPhone notch/Dynamic Island ── */
+@supports(padding: max(0px)) {
+  nav {
+    padding-left: max(2.5rem, env(safe-area-inset-left));
+    padding-right: max(2.5rem, env(safe-area-inset-right));
+  }
+  footer {
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+  .drawer-panel {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+@media(max-width:640px) {
+  @supports(padding: max(0px)) {
+    nav {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+  }
+}
