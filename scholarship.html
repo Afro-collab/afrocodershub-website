@@ -456,18 +456,18 @@ body.light .cic-val-m{color:#555;}
 
 <script>
 function submitScholarship() {
-  var first    = document.getElementById('firstName') ? document.getElementById('firstName').value.trim() : '';
-  var last     = document.getElementById('lastName')  ? document.getElementById('lastName').value.trim()  : '';
-  var email    = document.getElementById('email')     ? document.getElementById('email').value.trim()     : '';
-  var phone    = document.getElementById('phone')     ? document.getElementById('phone').value.trim()     : '';
-  var country  = document.getElementById('country')   ? document.getElementById('country').value.trim()   : '';
-  var course   = document.getElementById('course')    ? document.getElementById('course').value.trim()    : '';
-  var status   = document.getElementById('status')    ? document.getElementById('status').value.trim()    : '';
-  var statement= document.getElementById('statement') ? document.getElementById('statement').value.trim() : '';
-  var goals    = document.getElementById('goals')     ? document.getElementById('goals').value.trim()     : '';
+  var first    = document.getElementById('fname').value.trim();
+  var last     = document.getElementById('lname').value.trim();
+  var email    = document.getElementById('email').value.trim();
+  var phone    = document.getElementById('phone').value.trim();
+  var country  = document.getElementById('country').value.trim();
+  var course   = document.getElementById('course').value.trim();
+  var status   = document.getElementById('status').value.trim();
+  var statement= document.getElementById('statement').value.trim();
+  var goals    = document.getElementById('goals').value.trim();
 
   if (!first || !last || !email || !course || !statement) {
-    alert('Please fill in all required fields (Name, Email, Course, and Why you deserve this scholarship).');
+    alert('Please fill in all required fields (Name, Email, Course, and your scholarship statement).');
     return;
   }
 
