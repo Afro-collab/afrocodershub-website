@@ -690,7 +690,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
     <div class="contact-grid">
       <div class="contact-cards fade-up">
         <a href="https://www.afrocodershub.tech" target="_blank" class="cc-card"><div class="cc-icon cc-or">🌐</div><div><div class="cc-label">Website</div><div class="cc-val">www.afrocodershub.tech</div></div></a>
-        <a href="/cdn-cgi/l/email-protection#e0838f8e948183949593a08186928f838f84859293889582ce94858388" class="cc-card"><div class="cc-icon cc-or">✉️</div><div><div class="cc-label">Email</div><div class="cc-val"><span class="__cf_email__" data-cfemail="7f1c10110b1e1c0b0a0c3f1e190d101c101b1a0d0c170a1d510b1a1c17">[email&#160;protected]</span></div></div></a>
+        <a href="mailto:contactus@afrocodershub.tech" class="cc-card"><div class="cc-icon cc-or">✉️</div><div><div class="cc-label">Email</div><div class="cc-val">contactus&#64;afrocodershub.tech</div></div></a>
         <div class="cc-card"><div class="cc-icon cc-or">📞</div><div><div class="cc-label">Phone</div><a href="tel:+17034009191" style="display:block;font-size:13px;color:var(--text-muted);text-decoration:none;">+1 (703)-400-9191</a><a href="tel:+251900071080" style="display:block;font-size:13px;color:var(--text-muted);text-decoration:none;">+251 9 00 07 10 80</a></div></div>
         <div class="cc-card"><div class="cc-icon cc-or">📍</div><div><div class="cc-label">Address</div><div class="cc-val-m">Sterling, Virginia, USA</div></div></div>
         <div class="cc-social-row">
@@ -739,12 +739,12 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
         <div class="footer-socials">
           <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc" title="YouTube">▶</a>
           <a href="https://t.me/afrocoders" target="_blank" class="footer-soc" title="Telegram">✈</a>
-          <a href="/cdn-cgi/l/email-protection#096a66677d686a7d7c7a49686f7b666a666d6c7b7a617c6b277d6c6a61" class="footer-soc" title="Email">✉</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc" title="Email">✉</a>
         </div>
       </div>
       <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="https://portal.afrocodershub.tech">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://portal.afrocodershub.tech/dashboard.html">Student Portal</a></div></div>
       <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="#contact">Exclusive Services</a><a href="blog.html">Blog</a></div></div>
-      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="/cdn-cgi/l/email-protection#d3b0bcbda7b2b0a7a6a093b2b5a1bcb0bcb7b6a1a0bba6b1fda7b6b0bb">✉ <span class="__cf_email__" data-cfemail="82e1edecf6e3e1f6f7f1c2e3e4f0ede1ede6e7f0f1eaf7e0acf6e7e1ea">[email&#160;protected]</span></a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a><a href="https://www.youtube.com/@AfroCodersHub" target="_blank">▶ @AfroCodersHub</a><a href="#contact">📍 Sterling, Virginia, USA</a><a href="#contact" style="color:var(--text-dim);">🕘 Mon–Fri 9AM–6PM EST</a><a href="#contact" style="color:var(--text-dim);">🕙 Sat 10AM–3PM EST</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus&#64;afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a><a href="https://www.youtube.com/@AfroCodersHub" target="_blank">▶ @AfroCodersHub</a><a href="#contact">📍 Sterling, Virginia, USA</a><a href="#contact" style="color:var(--text-dim);">🕘 Mon–Fri 9AM–6PM EST</a><a href="#contact" style="color:var(--text-dim);">🕙 Sat 10AM–3PM EST</a></div></div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions · Sterling, Virginia, USA</div>
@@ -817,7 +817,7 @@ function sendMsg(){
       e=document.getElementById('cemail').value.trim(),
       m=document.getElementById('cmsg').value.trim();
   if(!n||!e||!m){alert('Please fill in all fields.');return;}
-  var s=encodeURIComponent('Message from '+n+' - AfroCodersHub Website'),
+  ('Message from '+n+' - AfroCodersHub Website'),
       b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\nMessage:\n'+m);
   window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
 }
@@ -826,7 +826,7 @@ var _obs=new IntersectionObserver(function(entries){entries.forEach(function(e){
 document.querySelectorAll('.fade-up').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{_obs.observe(el);}});
 </script>
 
-<!-- ══ FAQ MODAL ══ -->
+<!-- ══ FAQ FLOATING BUTTON + MODAL ══ -->
 <style>
 .faq-fab{position:fixed;bottom:32px;right:32px;z-index:800;background:linear-gradient(135deg,#FF6B1A,#CC4A00);color:#fff;border:none;border-radius:16px;padding:14px 24px;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(255,107,26,0.5);transition:all .25s;}
 .faq-fab:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,107,26,0.6);}
@@ -892,23 +892,22 @@ body.light .faq-ft{background:#f4f4f4;}
     <div class="faq-bd">
       <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">How long are the courses?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai">All courses run for <strong>12 weeks</strong>. Weeks 1-10 are instructor-led live sessions (3x per week, 2 hrs each). Weeks 11-12 are a real-world capstone project.</div></div></div>
       <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">How much do the courses cost?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Live Cohort</strong> from <strong>$800</strong>. <strong>Self-paced</strong> from <strong>$600</strong>. Full pricing on our <a href="/trainings.html">Trainings page</a>.</div></div></div>
-      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Live Cohort vs Self-paced — what is the difference?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Live Cohort</strong> - scheduled sessions via Google Meet with your instructor. Recordings included. <strong>Self-paced</strong> - all recordings and slides in Google Classroom. No deadlines. Both include a Certificate of Completion.</div></div></div>
+      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Live Cohort vs Self-paced - what is the difference?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Live Cohort</strong> - scheduled sessions via Google Meet with your instructor. Recordings included. <strong>Self-paced</strong> - all recordings and slides. No deadlines. Both include a Certificate of Completion.</div></div></div>
       <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Are the classes recorded?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Yes!</strong> All sessions are recorded and uploaded to Google Classroom within 24 hours.</div></div></div>
       <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">What payment methods do you accept?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Zelle</strong> (instant, no fees) and <strong>PayPal</strong> (invoice to your email). Seat held 24 hours after submitting.</div></div></div>
       <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Do you offer scholarships?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Yes!</strong> We offer scholarships to break financial barriers. <a href="/scholarship.html">Apply here</a></div></div></div>
       <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Will I get a certificate?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Yes!</strong> Every graduate receives an official <strong>Certificate of Completion</strong> plus a real-world portfolio project.</div></div></div>
-      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">What is your refund policy?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Live:</strong> 14+ days before start 10% fee. 7-13 days 20%. Within 7 days 25%. No refund after 30% of sessions. <strong>Self-paced:</strong> 10% within 48hrs. No refund once accessed. Contact admin&#64;afrocodershub.tech</div></div></div>
-      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Do I need prior experience?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai">Depends on the course. <strong>TechBridge for Parents</strong> and <strong>Youth Coders</strong> are beginner-friendly. Others benefit from basic IT knowledge. Contact us and we will guide you.</div></div></div>
-      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">How do I contact AfroCodersHub?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai">Email: admin&#64;afrocodershub.tech<br>Phone: +1 (703) 400-9191<br>Telegram: <a href="https://t.me/+oI-P6-O0XsBlNDYx" target="_blank">Join our community</a><br>Hours: Mon-Fri 9AM-6PM EST, Sat 10AM-3PM EST</div></div></div>
+      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">What is your refund policy?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai"><strong>Live:</strong> 14+ days before start 10% fee. 7-13 days 20%. Within 7 days 25%. No refund after 30% sessions. <strong>Self-paced:</strong> 10% within 48hrs. No refund once accessed. Contact contactus&#64;afrocodershub.tech</div></div></div>
+      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">Do I need prior experience?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai">Depends on the course. <strong>TechBridge for Parents</strong> and <strong>Youth Coders</strong> are beginner-friendly. Contact us and we will guide you.</div></div></div>
+      <div class="faq-i" onclick="tFaq(this)"><div class="faq-q"><span class="faq-qt">How do I contact AfroCodersHub?</span><div class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><div class="faq-ai">Email: contactus&#64;afrocodershub.tech<br>Phone: +1 (703) 400-9191<br>Telegram: <a href="https://t.me/+oI-P6-O0XsBlNDYx" target="_blank">Join our community</a><br>Hours: Mon-Fri 9AM-6PM EST, Sat 10AM-3PM EST</div></div></div>
     </div>
     <div class="faq-ft">
       <span class="faq-ft-t">Still have questions? We reply within 24hrs</span>
-      <a href="mailto:admin&#64;afrocodershub.tech" class="faq-ft-b">Contact Us</a>
+      <a href="mailto:contactus@afrocodershub.tech" class="faq-ft-b">Contact Us</a>
     </div>
   </div>
 </div>
-<script>/* all functions defined in nav script */</script>
-<!-- ══ END FAQ MODAL ══ -->
 
+<!-- ══ END FAQ MODAL ══ -->
 </body>
 </html>
