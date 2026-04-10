@@ -701,6 +701,217 @@ body.light .drawer-sub a:hover{color:var(--orange);background:rgba(255,107,26,0.
   </div>
 </section>
 
+<!-- ══ FAQ SECTION — paste into index.html before the footer ══ -->
+<section id="faq" style="scroll-margin-top:80px;">
+<style>
+/* ── FAQ SECTION ── */
+.faq-section{padding:96px 2.5rem;background:var(--bg2);border-top:1px solid var(--border2);}
+.faq-inner{max-width:860px;margin:0 auto;}
+.faq-tag{display:inline-flex;align-items:center;gap:6px;background:var(--orange-glow);border:1px solid var(--border);color:var(--orange);font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px;font-family:'Space Mono',monospace;}
+.faq-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-1.5px;margin-bottom:8px;}
+.faq-heading span{color:var(--orange);}
+.faq-sub{color:var(--text-muted);font-size:15px;margin-bottom:52px;max-width:520px;}
+.faq-list{display:flex;flex-direction:column;gap:10px;}
+.faq-item{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color .25s;}
+.faq-item.open{border-color:var(--border);}
+.faq-item:hover{border-color:rgba(255,107,26,0.25);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;}
+.faq-q-text{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text);line-height:1.35;}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .28s;}
+.faq-icon svg{width:12px;height:12px;stroke:var(--text-muted);transition:transform .28s;}
+.faq-item.open .faq-icon{background:var(--orange-glow);border-color:var(--border);}
+.faq-item.open .faq-icon svg{stroke:var(--orange);transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a-inner{padding:0 24px 20px;color:var(--text-muted);font-size:14px;line-height:1.75;border-top:1px solid var(--border2);}
+.faq-a-inner a{color:var(--orange);text-decoration:none;}
+.faq-a-inner a:hover{text-decoration:underline;}
+.faq-a-inner strong{color:var(--text);}
+.faq-item.open .faq-a{max-height:400px;}
+/* CTA below FAQ */
+.faq-cta{margin-top:44px;background:var(--orange-glow);border:1px solid var(--border);border-radius:16px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.faq-cta-text{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;}
+.faq-cta-sub{font-size:13px;color:var(--text-muted);margin-top:3px;}
+.faq-cta-btn{background:var(--orange);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s;}
+.faq-cta-btn:hover{background:var(--orange-dark);}
+/* Light mode */
+body.light .faq-section{background:var(--bg2);}
+body.light .faq-item{background:#fff;}
+body.light .faq-a-inner{border-color:var(--border2);}
+/* Responsive */
+@media(max-width:640px){
+  .faq-section{padding:60px 1.25rem;}
+  .faq-q{padding:16px 18px;}
+  .faq-q-text{font-size:14px;}
+  .faq-a-inner{padding:0 18px 16px;font-size:13px;}
+  .faq-cta{padding:20px;flex-direction:column;align-items:flex-start;}
+}
+</style>
+
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-tag">❓ &nbsp;FAQ</div>
+    <h2 class="faq-heading">Frequently Asked <span>Questions</span></h2>
+    <p class="faq-sub">Everything you need to know about our courses, payments, and community.</p>
+
+    <div class="faq-list">
+
+      <!-- Q1 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">How long are the courses?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          All our courses run for <strong>12 weeks</strong>. The programme is split into two phases — <strong>Weeks 1–10</strong> are instructor-led live sessions (3× per week, 2 hours each), and <strong>Weeks 11–12</strong> are dedicated to a real-world capstone project that you can add to your portfolio.
+        </div></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">How much do the courses cost?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          Pricing varies by course and plan. <strong>Live Cohort</strong> plans start from <strong>$800</strong> and <strong>Self-paced</strong> plans from <strong>$600</strong>. Visit our <a href="/trainings.html">Trainings page</a> for full pricing on each course. We also offer a <a href="/scholarship.html">scholarship programme</a> for eligible students.
+        </div></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">What is the difference between Live Cohort and Self-paced?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <strong>Live Cohort</strong> — you join scheduled live sessions via Google Meet, interact directly with the instructor, and follow the 12-week structured programme with your cohort. Recordings are included.<br><br>
+          <strong>Self-paced</strong> — you get access to all recorded sessions, slides, notes, and resources in Google Classroom. No deadlines — learn on your own schedule. Both plans receive a Certificate of Completion.
+        </div></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Are the classes recorded?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <strong>Yes!</strong> All live sessions are recorded and uploaded to Google Classroom within 24 hours. Whether you're on the Live Cohort or Self-paced plan, you always have access to every recording, slide deck, and resource.
+        </div></div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">What payment methods do you accept?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          We accept <strong>Zelle</strong> (instant US bank transfer, no fees) and <strong>PayPal</strong> (invoice sent to your email, global). After enrolling through the portal, payment instructions are provided immediately. Your seat is held for <strong>24 hours</strong> after submitting.
+        </div></div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Do you offer scholarships?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          Yes! AfroCodersHub offers a <strong>scholarship programme</strong> to break financial barriers and empower talented students in the African diaspora. Applications are reviewed on a rolling basis. Visit our <a href="/scholarship.html">Scholarship page</a> to apply or learn more.
+        </div></div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Will I get a certificate when I finish?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <strong>Yes!</strong> Every student who completes the 12-week programme receives an official <strong>Certificate of Completion</strong> from AfroCodersHub. You'll also have a real-world project in your portfolio that demonstrates job-ready skills to employers.
+        </div></div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">What is your refund policy?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <strong>Live Cohort:</strong> 14+ days before start → 10% fee. 7–13 days → 20% fee. Within 7 days or after start → 25% fee. No refund after 30% of sessions delivered.<br><br>
+          <strong>Self-paced:</strong> Within 48 hrs before Classroom access → 10% fee. No refund once accessed.<br><br>
+          Refund requests via <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a> — processed within 7–10 business days.
+        </div></div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Do I need prior experience to join?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          It depends on the course. Some tracks like <strong>TechBridge for Parents</strong> and <strong>Youth Coders</strong> are designed for complete beginners. Others like <strong>AWS Cloud</strong> or <strong>MuleSoft</strong> benefit from some basic IT knowledge. Contact us at <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a> and we'll help you choose the right course for your level.
+        </div></div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">How do I contact AfroCodersHub?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          📧 Email: <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a><br>
+          📞 Phone: <a href="tel:+17034009191">+1 (703) 400-9191</a><br>
+          ✈ Telegram: <a href="https://t.me/+oI-P6-O0XsBlNDYx" target="_blank">Join our community</a><br>
+          🕘 Mon–Fri 9AM–6PM EST &nbsp;|&nbsp; Sat 10AM–3PM EST
+        </div></div>
+      </div>
+
+    </div><!-- /faq-list -->
+
+    <!-- CTA -->
+    <div class="faq-cta">
+      <div>
+        <div class="faq-cta-text">Still have questions?</div>
+        <div class="faq-cta-sub">Our team replies within 24 hours — we're here to help.</div>
+      </div>
+      <a href="mailto:contactus@afrocodershub.tech" class="faq-cta-btn">✉ Contact Us →</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleFaq(item) {
+  var isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+  });
+  // Open clicked if it was closed
+  if (!isOpen) item.classList.add('open');
+}
+// FAQ Schema markup for Google rich results
+(function() {
+  var faqs = [];
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var q = item.querySelector('.faq-q-text').textContent.trim();
+    var a = item.querySelector('.faq-a-inner').textContent.trim();
+    faqs.push({ "@type": "Question", "name": q, "acceptedAnswer": { "@type": "Answer", "text": a } });
+  });
+  var schema = document.createElement('script');
+  schema.type = 'application/ld+json';
+  schema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqs });
+  document.head.appendChild(schema);
+})();
+</script>
+</section>
+<!-- ══ END FAQ SECTION ══ -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
