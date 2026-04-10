@@ -715,4 +715,7 @@ document.body.classList.add('js-ready');
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{obs.observe(el);}});
 window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
-function send
+function sendMsg(){const n=document.getElementById('cname').value.trim(),e=document.getElementById('cemail').value.trim(),m=document.getElementById('cmsg').value.trim();if(!n||!e||!m){alert('Please fill in all fields.');return;}const s=encodeURIComponent('Message from '+n+' — AfroCodersHub Website'),b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\nMessage:\n'+m);window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;}
+</script>
+</body>
+</html>
