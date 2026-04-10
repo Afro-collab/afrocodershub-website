@@ -491,6 +491,7 @@ body.light .drawer-sub a:hover{color:var(--orange);background:rgba(255,107,26,0.
       <a href="services.html" onclick="closeAllDD()">✨ Exclusive Services</a>
       <a href="blog.html" onclick="closeAllDD()">📝 Blog</a>
       <a href="index.html#contact" onclick="closeAllDD()">📞 Contact</a>
+      <a href="#faq" onclick="closeAllDD();setTimeout(function(){openFaqModal();},300);">❓ FAQ</a>
     </div>
   </div>
   </div>
@@ -842,7 +843,7 @@ body.light .faq-a-inner{border-color:var(--border2);}
         <div class="faq-a"><div class="faq-a-inner">
           <strong>Live Cohort:</strong> 14+ days before start → 10% fee. 7–13 days → 20% fee. Within 7 days or after start → 25% fee. No refund after 30% of sessions delivered.<br><br>
           <strong>Self-paced:</strong> Within 48 hrs before Classroom access → 10% fee. No refund once accessed.<br><br>
-          Refund requests via <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a> — processed within 7–10 business days.
+          Refund requests via <a href="/cdn-cgi/l/email-protection#ddbeb2b3a9bcbea9a8ae9dbcbbafb2beb2b9b8afaeb5a8bff3a9b8beb5"><span class="__cf_email__" data-cfemail="95f6fafbe1f4f6e1e0e6d5f4f3e7faf6faf1f0e7e6fde0f7bbe1f0f6fd">[email&#160;protected]</span></a> — processed within 7–10 business days.
         </div></div>
       </div>
 
@@ -853,7 +854,7 @@ body.light .faq-a-inner{border-color:var(--border2);}
           <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          It depends on the course. Some tracks like <strong>TechBridge for Parents</strong> and <strong>Youth Coders</strong> are designed for complete beginners. Others like <strong>AWS Cloud</strong> or <strong>MuleSoft</strong> benefit from some basic IT knowledge. Contact us at <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a> and we'll help you choose the right course for your level.
+          It depends on the course. Some tracks like <strong>TechBridge for Parents</strong> and <strong>Youth Coders</strong> are designed for complete beginners. Others like <strong>AWS Cloud</strong> or <strong>MuleSoft</strong> benefit from some basic IT knowledge. Contact us at <a href="/cdn-cgi/l/email-protection#54373b3a203537202127143532263b373b303126273c21367a2031373c"><span class="__cf_email__" data-cfemail="cba8a4a5bfaaa8bfbeb88baaadb9a4a8a4afaeb9b8a3bea9e5bfaea8a3">[email&#160;protected]</span></a> and we'll help you choose the right course for your level.
         </div></div>
       </div>
 
@@ -864,7 +865,7 @@ body.light .faq-a-inner{border-color:var(--border2);}
           <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          📧 Email: <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a><br>
+          📧 Email: <a href="/cdn-cgi/l/email-protection#14777b7a607577606167547572667b777b707166677c61763a6071777c"><span class="__cf_email__" data-cfemail="fb9894958f9a988f8e88bb9a9d899498949f9e8988938e99d58f9e9893">[email&#160;protected]</span></a><br>
           📞 Phone: <a href="tel:+17034009191">+1 (703) 400-9191</a><br>
           ✈ Telegram: <a href="https://t.me/+oI-P6-O0XsBlNDYx" target="_blank">Join our community</a><br>
           🕘 Mon–Fri 9AM–6PM EST &nbsp;|&nbsp; Sat 10AM–3PM EST
@@ -879,13 +880,13 @@ body.light .faq-a-inner{border-color:var(--border2);}
         <div class="faq-cta-text">Still have questions?</div>
         <div class="faq-cta-sub">Our team replies within 24 hours — we're here to help.</div>
       </div>
-      <a href="mailto:contactus@afrocodershub.tech" class="faq-cta-btn">✉ Contact Us →</a>
+      <a href="/cdn-cgi/l/email-protection#fc9f9392889d9f88898fbc9d9a8e939f9398998e8f94899ed288999f94" class="faq-cta-btn">✉ Contact Us →</a>
     </div>
 
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleFaq(item) {
   var isOpen = item.classList.contains('open');
   // Close all
@@ -1014,13 +1015,148 @@ function sendMsg(){
       e=document.getElementById('cemail').value.trim(),
       m=document.getElementById('cmsg').value.trim();
   if(!n||!e||!m){alert('Please fill in all fields.');return;}
-  var s=encodeURIComponent('Message from '+n+' - AfroCodersHub Website'),
-      b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\nMessage:\n'+m);
-  window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
+  var s=encodeURIComponent
+<!-- ══ FAQ FLOATING BUTTON + MODAL ══ -->
+<style>
+/* Floating button */
+.faq-float-btn{position:fixed;bottom:28px;right:28px;z-index:800;background:var(--orange);color:#fff;border:none;border-radius:50px;padding:12px 20px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 8px 32px rgba(255,107,26,0.45);transition:all .2s;white-space:nowrap;}
+.faq-float-btn:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,107,26,0.55);}
+.faq-float-btn .faq-float-icon{font-size:16px;line-height:1;}
+/* Modal overlay */
+.faq-modal-overlay{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;}
+.faq-modal-overlay.open{display:flex;}
+/* Modal box */
+.faq-modal-box{background:var(--card);border:1px solid var(--border);border-radius:20px;width:100%;max-width:640px;max-height:85vh;display:flex;flex-direction:column;animation:faqModalIn .25s ease;position:relative;}
+@keyframes faqModalIn{from{opacity:0;transform:scale(0.95) translateY(10px);}to{opacity:1;transform:scale(1) translateY(0);}}
+/* Modal header */
+.faq-modal-header{padding:22px 26px 18px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.faq-modal-title{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;display:flex;align-items:center;gap:10px;}
+.faq-modal-title span{color:var(--orange);}
+.faq-modal-close{width:32px;height:32px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);color:var(--text-muted);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;flex-shrink:0;}
+.faq-modal-close:hover{background:var(--bg4);color:var(--text);}
+/* Modal body scrollable */
+.faq-modal-body{overflow-y:auto;padding:18px 26px 24px;flex:1;}
+/* FAQ items inside modal */
+.faq-modal-item{border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-bottom:8px;transition:border-color .2s;}
+.faq-modal-item:hover{border-color:rgba(255,107,26,0.25);}
+.faq-modal-item.open{border-color:var(--border);}
+.faq-modal-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;cursor:pointer;user-select:none;}
+.faq-modal-q-text{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--text);line-height:1.35;}
+.faq-modal-icon{width:26px;height:26px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s;}
+.faq-modal-icon svg{width:11px;height:11px;stroke:var(--text-muted);transition:transform .25s;}
+.faq-modal-item.open .faq-modal-icon{background:var(--orange-glow);border-color:var(--border);}
+.faq-modal-item.open .faq-modal-icon svg{stroke:var(--orange);transform:rotate(45deg);}
+.faq-modal-a{max-height:0;overflow:hidden;transition:max-height .32s ease;}
+.faq-modal-item.open .faq-modal-a{max-height:300px;}
+.faq-modal-a-inner{padding:0 18px 15px;font-size:13px;color:var(--text-muted);line-height:1.75;border-top:1px solid var(--border2);}
+.faq-modal-a-inner a{color:var(--orange);text-decoration:none;}
+.faq-modal-a-inner a:hover{text-decoration:underline;}
+.faq-modal-a-inner strong{color:var(--text);}
+/* Modal footer CTA */
+.faq-modal-footer{padding:16px 26px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;flex-shrink:0;}
+.faq-modal-footer-text{font-size:13px;color:var(--text-muted);}
+.faq-modal-footer-btn{background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:9px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.faq-modal-footer-btn:hover{background:var(--orange-dark);}
+/* Light mode */
+body.light .faq-modal-box{background:#fff;}
+body.light .faq-modal-item{background:#fafafa;}
+/* Mobile */
+@media(max-width:640px){
+  .faq-float-btn{bottom:70px;right:16px;padding:10px 16px;font-size:12px;}
+  .faq-modal-overlay{align-items:flex-end;padding:0;}
+  .faq-modal-box{border-radius:20px 20px 0 0;max-height:90vh;}
+  .faq-modal-header{padding:18px 20px 14px;}
+  .faq-modal-body{padding:14px 20px 20px;}
+  .faq-modal-footer{padding:14px 20px;}
 }
-document.body.classList.add('js-ready');
-var _obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.fade-up').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{_obs.observe(el);}});
+</style>
+
+<!-- Floating button -->
+<button class="faq-float-btn" onclick="openFaqModal()" aria-label="Open FAQ">
+  <span class="faq-float-icon">❓</span> FAQ
+</button>
+
+<!-- FAQ Modal -->
+<div class="faq-modal-overlay" id="faqModal" onclick="if(event.target===this)closeFaqModal()">
+  <div class="faq-modal-box">
+    <div class="faq-modal-header">
+      <div class="faq-modal-title">❓ Frequently Asked <span>Questions</span></div>
+      <button class="faq-modal-close" onclick="closeFaqModal()">✕</button>
+    </div>
+    <div class="faq-modal-body">
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">How long are the courses?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner">All courses run for <strong>12 weeks</strong>. Weeks 1–10 are instructor-led live sessions (3× per week, 2 hours each). Weeks 11–12 are a real-world capstone project for your portfolio.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">How much do the courses cost?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Live Cohort</strong> from <strong>$800</strong> · <strong>Self-paced</strong> from <strong>$600</strong>. See full pricing on our <a href="/trainings.html">Trainings page</a>. Scholarships available for eligible students.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">What is the difference between Live Cohort and Self-paced?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Live Cohort</strong> — scheduled live sessions via Google Meet with your instructor and cohort. Recordings included.<br><br><strong>Self-paced</strong> — all recordings, slides and resources in Google Classroom. No deadlines, start anytime. Both include a Certificate of Completion.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">Are the classes recorded?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Yes!</strong> All live sessions are recorded and uploaded to Google Classroom within 24 hours. Every student has access to all recordings, slides and resources.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">What payment methods do you accept?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Zelle</strong> (instant, no fees) and <strong>PayPal</strong> (invoice sent to your email). Your seat is held for 24 hours after submitting.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">Do you offer scholarships?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Yes!</strong> We offer scholarships to break financial barriers for talented students in the African diaspora. <a href="/scholarship.html">Apply here →</a></div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">Will I get a certificate?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Yes!</strong> Every graduate receives an official <strong>Certificate of Completion</strong> from AfroCodersHub plus a real-world portfolio project.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">What is your refund policy?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner"><strong>Live:</strong> 14+ days before start → 10% fee · 7–13 days → 20% · within 7 days → 25%. No refund after 30% of sessions.<br><strong>Self-paced:</strong> 10% fee within 48hrs. No refund once accessed. Email <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a>.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">Do I need prior experience?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner">Depends on the course. <strong>TechBridge for Parents</strong> and <strong>Youth Coders</strong> are beginner-friendly. Others benefit from basic IT knowledge. <a href="mailto:contactus@afrocodershub.tech">Contact us</a> and we'll help you choose.</div></div>
+      </div>
+
+      <div class="faq-modal-item" onclick="toggleFaqModal(this)">
+        <div class="faq-modal-q"><span class="faq-modal-q-text">How do I contact AfroCodersHub?</span><div class="faq-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-modal-a"><div class="faq-modal-a-inner">📧 <a href="mailto:contactus@afrocodershub.tech">contactus@afrocodershub.tech</a><br>📞 <a href="tel:+17034009191">+1 (703) 400-9191</a><br>✈ <a href="https://t.me/+oI-P6-O0XsBlNDYx" target="_blank">Telegram Community</a><br>🕘 Mon–Fri 9AM–6PM EST · Sat 10AM–3PM EST</div></div>
+      </div>
+
+    </div>
+    <div class="faq-modal-footer">
+      <span class="faq-modal-footer-text">Still have questions? We reply within 24hrs.</span>
+      <a href="mailto:contactus@afrocodershub.tech" class="faq-modal-footer-btn">✉ Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openFaqModal(){
+  document.getElementById('faqModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeFaqModal(){
+  document.getElementById('faqModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleFaqModal(item){
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-modal-item.open').forEach(function(el){el.classList.remove('open');});
+  if(!isOpen) item.classList.add('open');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeFaqModal();});
 </script>
-</body>
-</html>
+<!-- ══ END FAQ MODAL ══ -->
