@@ -734,4 +734,18 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
-function send
+function sendMsg(){
+  var n=document.getElementById('cname').value.trim(),
+      e=document.getElementById('cemail').value.trim(),
+      m=document.getElementById('cmsg').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields.');return;}
+  var s=encodeURIComponent('Message from '+n+' - AfroCodersHub Website'),
+      b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\nMessage:\n'+m);
+  window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
+}
+document.body.classList.add('js-ready');
+var _obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{_obs.observe(el);}});
+</script>
+</body>
+</html>
