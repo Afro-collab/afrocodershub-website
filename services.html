@@ -327,25 +327,7 @@ body.light .portfolio-note-text{color:#555;}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleDD(id){
-  var dd=document.getElementById(id);
-  var isOpen=dd.classList.contains('open');
-  closeAllDD();
-  if(!isOpen)dd.classList.add('open');
-}
-function closeAllDD(){
-  document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open');});
-}
-// Close on outside click — ignore clicks inside dropdown menus
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-dropdown'))closeAllDD();
-});
-// Stop clicks inside the menu from bubbling up and re-closing
-document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){
-  m.addEventListener('click',function(e){e.stopPropagation();});
-});
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape')closeAllDD();
-});
-function toggleTheme(){var l=document.body.classList.t
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</script>
+</body>
+</html>

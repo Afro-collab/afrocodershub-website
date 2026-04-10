@@ -444,35 +444,7 @@ body.light .cic-val-m{color:#555;}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleDD(id){
-  var dd=document.getElementById(id);
-  var isOpen=dd.classList.contains('open');
-  closeAllDD();
-  if(!isOpen)dd.classList.add('open');
-}
-function closeAllDD(){
-  document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open');});
-}
-// Close on outside click — ignore clicks inside dropdown menus
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-dropdown'))closeAllDD();
-});
-// Stop clicks inside the menu from bubbling up and re-closing
-document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){
-  m.addEventListener('click',function(e){e.stopPropagation();});
-});
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape')closeAllDD();
-});
-function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
-(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
-function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
-function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
-function submitScholarship(){
-  var fn=document.getElementById('fname').value.trim(),ln=document.getElementById('lname').value.trim(),em=document.getElementById('email').value.trim(),ph=document.getElementById('phone').value.trim(),co=document.getElementById('country').value.trim(),cr=document.getElementById('course').value,st=document.getElementById('status').value,ps=document.getElementById('statement').value.trim(),gl=document.getElementById('goals').value.trim();
-  if(!fn||!em||!cr||!ps){alert('Please fill in your name, email, course, and
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</script>
+</body>
+</html>

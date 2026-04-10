@@ -281,24 +281,7 @@ body.light .sidebar-cta-sub{color:#555;}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleTheme(){var l=document.body.classList.toggle('light');localStorage.setItem('ach-theme',l?'light':'dark');}
-(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
-function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
-function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrawer();closeAllDD();}});
-function toggleDD(id){
-  var dd=document.getElementById(id);
-  var isOpen=dd.classList.contains('open');
-  closeAllDD();
-  if(!isOpen){dd.classList.add('open');}
-}
-function closeAllDD(){
-  document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open');});
-}
-// Close when clicking outside — but NOT when clicking inside a dropdown menu
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-dropdown')){closeAllDD();}
-});
-// Prevent dropdown menu clicks from bubbling up and closing the menu
-document.querySelectorAll(
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</script>
+</body>
+</html>
