@@ -546,8 +546,8 @@ body.light .drawer-sub a:hover{color:var(--orange);background:rgba(255,107,26,0.
       <div class="hero-img-overlay"></div>
       <div class="hero-badge"><div class="hb-label">Top Rated</div><div class="hb-val">4.9★</div><div class="hb-sub">Reviews</div></div>
       <div class="hero-card">
-        <div class="hc-top"><div class="hc-av">LD</div><div><div class="hc-name">Lilu Dawit</div><div class="hc-sub">AWS Cloud · Live Cohort</div></div></div>
-        <div class="xp-wrap"><div class="xp-row"><span style="color:var(--text-dim);">Level 1 — New Coder</span><span>110 / 200 XP</span></div><div class="xp-track"><div class="xp-fill"></div></div></div>
+        <div class="hc-top"><div class="hc-av" id="hcAv">AC</div><div><div class="hc-name" id="hcName">AfroCodersHub Student</div><div class="hc-sub" id="hcSub">Join a course to get started</div></div></div>
+        <div class="xp-wrap"><div class="xp-row"><span style="color:var(--text-dim);" id="hcLevel">Level 1 — New Coder</span><span id="hcXP">0 / 200 XP</span></div><div class="xp-track"><div class="xp-fill" id="hcFill" style="width:0%"></div></div></div>
       </div>
     </div>
   </div>
@@ -734,6 +734,44 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
+
+/* ── HERO CARD: Load real user data from Firebase ── */
+(function() {
+  var cfg = {
+    apiKey: "AIzaSyBzMx5gQ3wJmpoignxA7It8x2fjTfKZc0g",
+    authDomain: "afrocodershub-lms.firebaseapp.com",
+    projectId: "afrocodershub-lms"
+  };
+  if (!window.firebase) return;
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(cfg);
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) return;
+      var name = user.displayName || user.email.split('@')[0];
+      var initials = name.split(' ').map(function(w){return w[0];}).join('').toUpperCase().slice(0,2);
+      var nameEl = document.getElementById('hcName');
+      var avEl   = document.getElementById('hcAv');
+      var subEl  = document.getElementById('hcSub');
+      if (nameEl) nameEl.textContent = name;
+      if (avEl)   avEl.textContent   = initials;
+      // Load XP from Firestore
+      firebase.firestore().collection('users').doc(user.uid).get().then(function(doc) {
+        if (!doc.exists) return;
+        var xp  = doc.data().xp || 0;
+        var lvl = xp < 200 ? 'Level 1 — New Coder' : xp < 500 ? 'Level 2 — Rising Coder' : 'Level 3 — Code Apprentice';
+        var max = xp < 200 ? 200 : xp < 500 ? 500 : 1000;
+        var pct = Math.min(100, Math.round((xp / max) * 100));
+        var lvlEl  = document.getElementById('hcLevel');
+        var xpEl   = document.getElementById('hcXP');
+        var fillEl = document.getElementById('hcFill');
+        if (lvlEl)  lvlEl.textContent  = lvl;
+        if (xpEl)   xpEl.textContent   = xp + ' / ' + max + ' XP';
+        if (fillEl) fillEl.style.width = pct + '%';
+        if (subEl)  subEl.textContent  = 'Active student — keep it up! 🔥';
+      }).catch(function(){});
+    });
+  } catch(e) {}
+})();
 function sendMsg(){
   var n=document.getElementById('cname').value.trim(),
       e=document.getElementById('cemail').value.trim(),
