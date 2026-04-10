@@ -102,6 +102,9 @@ body.light .cic-label{color:#888;}
 body.light .cic-val-m{color:#555;}
 @media(max-width:768px){.schol-hero-content{grid-template-columns:1fr;}.elig-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
 </style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
 </head>
 <body>
 <script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
@@ -455,51 +458,100 @@ body.light .cic-val-m{color:#555;}
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
 <script>
+// Firebase already loaded in dashboard — use same config
+var SCHOL_FB_CONFIG = {
+  apiKey:    "AIzaSyBzMx5gQ3wJmpoignxA7It8x2fjTfKZc0g",
+  authDomain:"afrocodershub-lms.firebaseapp.com",
+  projectId: "afrocodershub-lms"
+};
+
+var scholDb = null;
+try {
+  if (!firebase.apps.length) firebase.initializeApp(SCHOL_FB_CONFIG);
+  else firebase.app();
+  scholDb = firebase.firestore();
+} catch(e) { console.warn('Firebase init:', e); }
+
 function submitScholarship() {
-  var first    = document.getElementById('fname').value.trim();
-  var last     = document.getElementById('lname').value.trim();
-  var email    = document.getElementById('email').value.trim();
-  var phone    = document.getElementById('phone').value.trim();
-  var country  = document.getElementById('country').value.trim();
-  var course   = document.getElementById('course').value.trim();
-  var status   = document.getElementById('status').value.trim();
-  var statement= document.getElementById('statement').value.trim();
-  var goals    = document.getElementById('goals').value.trim();
+  var first     = document.getElementById('fname').value.trim();
+  var last      = document.getElementById('lname').value.trim();
+  var email     = document.getElementById('email').value.trim();
+  var phone     = document.getElementById('phone').value.trim();
+  var country   = document.getElementById('country').value.trim();
+  var course    = document.getElementById('course').value.trim();
+  var status    = document.getElementById('status').value.trim();
+  var statement = document.getElementById('statement').value.trim();
+  var goals     = document.getElementById('goals').value.trim();
 
   if (!first || !last || !email || !course || !statement) {
-    alert('Please fill in all required fields (Name, Email, Course, and your scholarship statement).');
+    alert('Please fill in all required fields: Name, Email, Course, and your scholarship statement.');
     return;
   }
 
-  var subject = encodeURIComponent('Scholarship Application — ' + first + ' ' + last + ' — ' + course);
-  var body = encodeURIComponent(
-    'SCHOLARSHIP APPLICATION
-' +
-    '========================
+  var btn = document.querySelector('.form-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
 
-' +
-    'Name: ' + first + ' ' + last + '
-' +
-    'Email: ' + email + '
-' +
-    'Phone: ' + phone + '
-' +
-    'Country: ' + country + '
-' +
-    'Course: ' + course + '
-' +
-    'Current Status: ' + status + '
+  var data = {
+    firstName: first, lastName: last, email: email,
+    phone: phone, country: country, course: course,
+    currentStatus: status, statement: statement, goals: goals,
+    submittedAt: new Date().toISOString(),
+    status: 'pending'
+  };
 
-' +
-    'Why I deserve this scholarship:
-' + statement + '
+  // Save to Firestore
+  if (scholDb) {
+    scholDb.collection('scholarshipApplications').add(data)
+      .then(function() {
+        sendEmailNotification(first, last, email, phone, country, course, status, statement, goals);
+        showSuccess();
+      })
+      .catch(function(e) {
+        console.warn('Firestore failed, trying mailto:', e);
+        sendMailto(first, last, email, phone, country, course, status, statement, goals);
+      });
+  } else {
+    sendMailto(first, last, email, phone, country, course, status, statement, goals);
+  }
+}
 
-' +
-    'How I will use these skills:
-' + goals
-  );
+function sendMailto(first, last, email, phone, country, course, status, statement, goals) {
+  // Send email via Cloud Function (same as LMS dashboard)
+  try {
+    var fn = firebase.functions().httpsCallable('sendEmail');
+    fn({
+      templateId: 'template_qot92ca',
+      params: {
+        to_email:     'contactus@afrocodershub.tech',
+        to_name:      'AfroCodersHub Team',
+        subject:      'New Scholarship Application — ' + first + ' ' + last,
+        from_name:    first + ' ' + last,
+        from_email:   email,
+        course_name:  course,
+        note:         'Phone: ' + phone + ' | Country: ' + country + ' | Status: ' + status +
+                      '\nWhy deserving: ' + statement +
+                      '\nCareer goals: ' + goals,
+        request_date: new Date().toLocaleString('en-US',{timeZone:'America/New_York'}) + ' EST'
+      }
+    }).then(function(r){ console.log('Email sent:', r); })
+      .catch(function(e){ console.warn('Email CF failed:', e); });
+  } catch(e) { console.warn('Email error:', e); }
+  showSuccess();
+}
 
-  window.location.href = 'mailto:contactus@afrocodershub.tech?subject=' + subject + '&body=' + body;
+function showSuccess() {
+  // Replace form with success message
+  var form = document.querySelector('.apply-form');
+  if (form) {
+    form.innerHTML = '<div style="text-align:center;padding:48px 20px;">' +
+      '<div style="font-size:52px;margin-bottom:16px;">🎉</div>' +
+      '<h3 style="font-family:Syne,sans-serif;font-size:22px;margin-bottom:10px;">Application Submitted!</h3>' +
+      '<p style="color:var(--text-muted);font-size:14px;line-height:1.7;max-width:400px;margin:0 auto 20px;">' +
+      'Thank you for applying! Our team will review your application and get back to you within <strong>5–7 business days</strong>.</p>' +
+      '<p style="color:var(--orange);font-size:13px;">contactus@afrocodershub.tech</p>' +
+      '</div>';
+  }
 }
 </script>
 
