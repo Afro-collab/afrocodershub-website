@@ -294,7 +294,7 @@ document.addEventListener('click',function(e){
 document.querySelectorAll('.nav-dropdown-menu').forEach(function(menu){
   menu.addEventListener('click',function(e){e.stopPropagation();});
 });
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{obs.observe(el);}});
 window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
 function subscrib
