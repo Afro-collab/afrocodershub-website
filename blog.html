@@ -257,12 +257,12 @@ body.light .newsletter-input{background:#F0F0F0;border-color:rgba(0,0,0,0.12);co
         <div class="footer-socials">
           <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
           <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
-          <a href="/cdn-cgi/l/email-protection#4f2c20213b2e2c3b3a3c0f2e293d202c202b2a3d3c273a2d613b2a2c27" class="footer-soc">✉</a>
+          <a href="/cdn-cgi/l/email-protection#6605090812070512131526070014090509020314150e1304481203050e" class="footer-soc">✉</a>
         </div>
       </div>
       <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://portal.afrocodershub.tech/dashboard.html">Student Portal</a></div></div>
       <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="blog.html">Blog</a></div></div>
-      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="/cdn-cgi/l/email-protection#385b57564c595b4c4d4b78595e4a575b575c5d4a4b504d5a164c5d5b50">✉ <span class="__cf_email__" data-cfemail="44272b2a302527303137042522362b272b202136372c31266a3021272c">[email&#160;protected]</span></a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="/cdn-cgi/l/email-protection#03606c6d776260777670436265716c606c676671706b76612d7766606b">✉ <span class="__cf_email__" data-cfemail="f0939f9e849193848583b09196829f939f94958283988592de84959398">[email&#160;protected]</span></a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
@@ -295,7 +295,10 @@ document.querySelectorAll('.nav-dropdown-menu').forEach(function(menu){
   menu.addEventListener('click',function(e){e.stopPropagation();});
 });
 document.body.classList.add('js-ready');
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.fade-up').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{obs.observe(el);}});
+var _obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{_obs.observe(el);}});
 window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
 function subscrib
+</script>
+</body>
+</html>

@@ -359,7 +359,7 @@ body.light .cic-val-m{color:#555;}
       <div class="contact-info-card">
         <div class="cic-icon">✉️</div>
         <div class="cic-label">Email</div>
-        <a href="/cdn-cgi/l/email-protection#c0a3afaeb4a1a3b4b5b380a1a6b2afa3afa4a5b2b3a8b5a2eeb4a5a3a8" class="cic-val" style="text-decoration:none;display:block;"><span class="__cf_email__" data-cfemail="d6b5b9b8a2b7b5a2a3a596b7b0a4b9b5b9b2b3a4a5bea3b4f8a2b3b5be">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#03606c6d776260777670436265716c606c676671706b76612d7766606b" class="cic-val" style="text-decoration:none;display:block;"><span class="__cf_email__" data-cfemail="c0a3afaeb4a1a3b4b5b380a1a6b2afa3afa4a5b2b3a8b5a2eeb4a5a3a8">[email&#160;protected]</span></a>
       </div>
       <div class="contact-info-card">
         <div class="cic-icon">📞</div>
@@ -410,12 +410,12 @@ body.light .cic-val-m{color:#555;}
         <div class="footer-socials">
           <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
           <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
-          <a href="/cdn-cgi/l/email-protection#22414d4c564341565751624344504d414d464750514a57400c5647414a" class="footer-soc">✉</a>
+          <a href="/cdn-cgi/l/email-protection#7c1f1312081d1f08090f3c1d1a0e131f1318190e0f14091e5208191f14" class="footer-soc">✉</a>
         </div>
       </div>
       <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://portal.afrocodershub.tech/dashboard.html">Student Portal</a></div></div>
       <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="blog.html">Blog</a></div></div>
-      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="/cdn-cgi/l/email-protection#f1929e9f859092858482b19097839e929e95948382998493df85949299">✉ <span class="__cf_email__" data-cfemail="64070b0a100507101117240502160b070b000116170c11064a1001070c">[email&#160;protected]</span></a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="/cdn-cgi/l/email-protection#3655595842575542434576575044595559525344455e4354184253555e">✉ <span class="__cf_email__" data-cfemail="197a76776d787a6d6c6a59787f6b767a767d7c6b6a716c7b376d7c7a71">[email&#160;protected]</span></a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a></div></div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
@@ -451,9 +451,12 @@ function openDrawer(){document.getElementById('drawer').classList.add('open');do
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
 document.body.classList.add('js-ready');
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.fade-up').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{obs.observe(el);}});
+var _obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight){el.classList.add('in');}else{_obs.observe(el);}});
 window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.boxShadow=window.scrollY>10?'0 4px 28px rgba(0,0,0,0.35)':'none';},{passive:true});
 function submitScholarship(){
   var fn=document.getElementById('fname').value.trim(),ln=document.getElementById('lname').value.trim(),em=document.getElementById('email').value.trim(),ph=document.getElementById('phone').value.trim(),co=document.getElementById('country').value.trim(),cr=document.getElementById('course').value,st=document.getElementById('status').value,ps=document.getElementById('statement').value.trim(),gl=document.getElementById('goals').value.trim();
   if(!fn||!em||!cr||!ps){alert('Please fill in your name, email, course, and
+</script>
+</body>
+</html>
