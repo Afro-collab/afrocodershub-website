@@ -9,16 +9,6 @@
   gtag("js", new Date());
   gtag("config", "G-NFY0973FH0");
 </script>
-<!-- Firebase SDKs for contact form -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
-<script>
-try {
-  var _idx={apiKey:"AIzaSyBzMx5gQ3wJmpoignxA7It8x2fjTfKZc0g",authDomain:"afrocodershub-lms.firebaseapp.com",projectId:"afrocodershub-lms"};
-  if(!firebase.apps.length)firebase.initializeApp(_idx);
-} catch(ex){console.warn('FB:',ex);}
-</script>
 <title>AfroCodersHub — Tech Training & Consulting | Sterling, Virginia</title>
 <meta name="description" content="World-class tech training in Data Science, AWS Cloud, Full Stack Web Dev, MuleSoft & more. Serving the African diaspora in the USA. Enrol today!">
 <meta name="keywords" content="AfroCodersHub, tech training Virginia, African tech education, data science course USA, AWS cloud certification, coding bootcamp Virginia, African developers">
@@ -827,54 +817,9 @@ function sendMsg(){
       e=document.getElementById('cemail').value.trim(),
       m=document.getElementById('cmsg').value.trim();
   if(!n||!e||!m){alert('Please fill in all fields.');return;}
-
-  var btn=document.querySelector('.form-submit');
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
-
-  // Save to Firestore
-  try {
-    if(typeof firebase!=='undefined'&&firebase.apps.length){
-      var db=firebase.firestore();
-      db.collection('contactMessages').add({
-        name:n, email:e, message:m,
-        submittedAt:new Date().toISOString(), status:'new'
-      }).catch(function(err){console.warn('Firestore:',err);});
-    }
-  } catch(err){console.warn('DB error:',err);}
-
-  // Send email via Cloud Function
-  try {
-    if(typeof firebase!=='undefined'&&firebase.apps.length){
-      var fn=firebase.functions().httpsCallable('sendEmail');
-      fn({
-        templateId:'template_qot92ca',
-        params:{
-          to_email:'contactus@afrocodershub.tech',
-          to_name:'AfroCodersHub Team',
-          subject:'New Contact Message from '+n,
-          from_name:n,
-          from_email:e,
-          course_name:'Website Contact Form',
-          note:m,
-          request_date:new Date().toLocaleString('en-US',{timeZone:'America/New_York'})+' EST'
-        }
-      }).then(function(){console.log('Email sent!');})
-        .catch(function(err){console.warn('Email CF:',err);});
-    }
-  } catch(err){console.warn('Email error:',err);}
-
-  // Show success
-  setTimeout(function(){
-    var form=document.querySelector('.contact-form-box');
-    if(form){
-      form.innerHTML='<div style="text-align:center;padding:40px 20px;">'+
-        '<div style="font-size:48px;margin-bottom:14px;">✅</div>'+
-        '<h3 style="font-family:Syne,sans-serif;font-size:20px;margin-bottom:8px;">Message Sent!</h3>'+
-        '<p style="color:var(--text-muted);font-size:13px;line-height:1.7;">Thank you '+n+'! We'll get back to you within 24 hours.<br>'+
-        '<span style="color:var(--orange);">contactus@afrocodershub.tech</span></p>'+
-        '</div>';
-    }
-  },800);
+  ('Message from '+n+' - AfroCodersHub Website'),
+      b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\nMessage:\n'+m);
+  window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
 }
 document.body.classList.add('js-ready');
 var _obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
