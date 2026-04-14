@@ -118,6 +118,26 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
 <body>
 <script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
 
+<script>
+function toggleDD(id){
+  var dd=document.getElementById(id);
+  var isOpen=dd.classList.contains('open');
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(d){d.classList.remove('open');});
+  if(!isOpen)dd.classList.add('open');
+}
+function closeAllDD(){
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(d){d.classList.remove('open');});
+}
+function toggleTheme(){
+  var isLight=document.body.classList.toggle('light');
+  localStorage.setItem('ach-theme',isLight?'light':'dark');
+}
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdown'))closeAllDD();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD();closeDrawer();}});
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+</script>
 <nav id="mainnav">
   <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
@@ -408,7 +428,7 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">TBA</div><div class="course-price-sub">Register interest</div></div>
-            <a href="/cdn-cgi/l/email-protection#12717d7c667371666761527374607d717d767760617a67703c6677717a2d616770787771662f5368676077325b7c667760776166" class="course-enrol">Get Notified →</a>
+            <a href="mailto:contactus@afrocodershub.tech" class="course-enrol">Get Notified →</a>
           </div>
         </div>
       </div>
@@ -426,7 +446,7 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
           </div>
           <div class="course-footer">
             <div class="course-price-wrap"><div class="course-price">TBA</div><div class="course-price-sub">Register interest</div></div>
-            <a href="/cdn-cgi/l/email-protection#9ffcf0f1ebfefcebeaecdffef9edf0fcf0fbfaedecf7eafdb1ebfafcf7a0eceafdf5fafceba2c6f0eaebf7bfdcf0fbfaedecbfd6f1ebfaedfaeceb" class="course-enrol">Get Notified →</a>
+            <a href="mailto:contactus@afrocodershub.tech" class="course-enrol">Get Notified →</a>
           </div>
         </div>
       </div>
@@ -503,12 +523,12 @@ body.light .filter-btn:hover,body.light .filter-btn.active{background:rgba(255,1
         <div class="footer-socials">
           <a href="https://www.youtube.com/@AfroCodersHub" target="_blank" class="footer-soc">▶</a>
           <a href="https://t.me/afrocoders" target="_blank" class="footer-soc">✈</a>
-          <a href="/cdn-cgi/l/email-protection#3c5f5352485d5f48494f7c5d5a4e535f5358594e4f54495e1248595f54" class="footer-soc">✉</a>
+          <a href="mailto:contactus@afrocodershub.tech" class="footer-soc">✉</a>
         </div>
       </div>
       <div><div class="footer-col-title">Training</div><div class="footer-col"><a href="trainings.html">All Courses</a><a href="scholarship.html">Scholarships</a><a href="https://portal.afrocodershub.tech/dashboard.html">Student Portal</a></div></div>
       <div><div class="footer-col-title">Company</div><div class="footer-col"><a href="index.html#about">About Us</a><a href="consultancy.html">Consultancy</a><a href="services.html">Exclusive Services</a><a href="blog.html">Blog</a></div></div>
-      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="/cdn-cgi/l/email-protection#74171b1a001517000107341512061b171b101106071c01165a0011171c">✉ <span class="__cf_email__" data-cfemail="aac9c5c4decbc9dedfd9eacbccd8c5c9c5cecfd8d9c2dfc884decfc9c2">[email&#160;protected]</span></a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a><a href="index.html#contact">📍 Sterling, Virginia, USA</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col"><a href="mailto:contactus@afrocodershub.tech">✉ contactus&#64;afrocodershub.tech</a><a href="tel:+17034009191">📞 +1 (703)-400-9191</a><a href="tel:+251900071080">📞 +251 9 00 07 10 80</a><a href="https://t.me/afrocoders" target="_blank">✈ t.me/afrocoders</a><a href="index.html#contact">📍 Sterling, Virginia, USA</a></div></div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 <span>AfroCodersHub LLC</span> — Empowering Tech Solutions</div>
