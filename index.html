@@ -521,7 +521,6 @@ function closeDrawer(){document.getElementById('drawer').classList.remove('open'
   </div>
     <a href="consultancy.html">Consultancy</a>
     <a href="services.html">Services</a>
-    <a href="scholarship.html">Scholarship</a>
     <div class="nav-dropdown" id="ddMore">
     <button class="nav-dropdown-trigger" onclick="toggleDD('ddMore')">More <span class="arrow">▾</span></button>
     <div class="nav-dropdown-menu">
@@ -548,7 +547,7 @@ function closeDrawer(){document.getElementById('drawer').classList.remove('open'
       <button class="drawer-close" onclick="closeDrawer()">✕</button>
     </div>
     <div class="drawer-nav">
-      <a href="#" class="active">🏠 Home</a>
+      <a href="index.html" class="active">🏠 Home</a>
       <a href="trainings.html">📚 Trainings</a>
       <div class="drawer-sub">
         <a href="trainings.html">All Courses</a>
@@ -556,13 +555,8 @@ function closeDrawer(){document.getElementById('drawer').classList.remove('open'
       </div>
       <a href="consultancy.html">💼 Consultancy</a>
       <a href="services.html">✨ Services</a>
-      <a href="scholarship.html">🎓 Scholarship</a>
       <a href="blog.html">📰 Blog</a>
-      <div class="drawer-sub">
-        <a href="services.html">✨ Exclusive Services</a>
-        <a href="#">📝 Blog</a>
-        <a href="index.html#contact">📞 Contact</a>
-      </div>
+
       <div class="drawer-divider"></div>
       <a href="https://portal.afrocodershub.tech/dashboard.html">🖥️ Student Portal</a>
     </div>
@@ -646,7 +640,7 @@ function closeDrawer(){document.getElementById('drawer').classList.remove('open'
       <div class="course-card fade-up"><div class="ct" style="background:linear-gradient(145deg,#041008,#0a2414);height:130px;display:flex;align-items:center;justify-content:center;font-size:44px;">🔌</div><div class="cb"><div class="cc">Networking</div><div class="ct2">CCNA Networking Basics</div><div class="cm">👤 AfroCodersHub Team · ⏱ 12 Weeks</div><div class="cf"><div class="cp">$1,200</div><a href="https://portal.afrocodershub.tech" class="ce">Enrol →</a></div></div></div>
       <div class="course-card fade-up"><div class="ct" style="background:linear-gradient(145deg,#020d14,#062240);height:130px;display:flex;align-items:center;justify-content:center;font-size:44px;">🐍</div><div class="cb"><div class="cc">Programming Languages</div><div class="ct2">Java & Python Programming</div><div class="cm">👤 AfroCodersHub Team · ⏱ 12 Weeks</div><div class="cf"><div class="cp">$1,200</div><a href="https://portal.afrocodershub.tech" class="ce">Enrol →</a></div></div></div>
     </div>
-    <div style="text-align:center;margin-top:40px;"><a href="trainings.html" class="btn-primary btn-lg">View All 12 Courses →</a></div>
+    <div style="text-align:center;margin-top:40px;"><a href="trainings.html" class="btn-primary btn-lg">View All 8 Courses →</a></div>
   </div>
 </section>
 
@@ -821,7 +815,7 @@ function sendMsg(){
       e=document.getElementById('cemail').value.trim(),
       m=document.getElementById('cmsg').value.trim();
   if(!n||!e||!m){alert('Please fill in all fields.');return;}
-  ('Message from '+n+' - AfroCodersHub Website'),
+  var s=encodeURIComponent('Message from '+n+' - AfroCodersHub Website'),
       b=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\nMessage:\n'+m);
   window.location.href='mailto:contactus@afrocodershub.tech?subject='+s+'&body='+b;
 }
