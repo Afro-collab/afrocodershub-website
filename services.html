@@ -102,6 +102,26 @@ body.light .portfolio-note-text{color:#555;}
 <body>
 <script>if(localStorage.getItem('ach-theme')==='light')document.documentElement.classList.add('light-init');</script>
 
+<script>
+function toggleDD(id){
+  var dd=document.getElementById(id);
+  var isOpen=dd.classList.contains('open');
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(d){d.classList.remove('open');});
+  if(!isOpen)dd.classList.add('open');
+}
+function closeAllDD(){
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(d){d.classList.remove('open');});
+}
+function toggleTheme(){
+  var isLight=document.body.classList.toggle('light');
+  localStorage.setItem('ach-theme',isLight?'light':'dark');
+}
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdown'))closeAllDD();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD();closeDrawer();}});
+(function(){if(localStorage.getItem('ach-theme')==='light')document.body.classList.add('light');})();
+</script>
 <nav id="mainnav">
   <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="AfroCodersHub" class="nav-logo-img">
