@@ -201,7 +201,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
 
       <!-- Post 1 — Featured -->
       <a href="blog-fullstack-devs-2026.html" class="blog-card fade-up">
-        <div class="blog-card-thumb" style="background:linear-gradient(145deg,#040814,#0a1428);">💻</div>
+        <img class="blog-card-thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80&auto=format&fit=crop" alt="Full Stack Developer 2026" loading="lazy">
         <div class="blog-card-body">
           <div class="blog-card-cat">💼 Career Trends</div>
           <div class="blog-card-title">Full Stack Devs Are the Most Hired in 2026</div>
@@ -210,7 +210,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
         </div>
       </a>
       <a href="blog-powerbi-copilot.html" class="blog-card fade-up">
-        <div class="blog-card-thumb" style="background:linear-gradient(145deg,#040414,#0a0828);">📊</div>
+        <img class="blog-card-thumb" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop" alt="Power BI AI Analytics" loading="lazy">
         <div class="blog-card-body">
           <div class="blog-card-cat">📊 Data & Analytics</div>
           <div class="blog-card-title">Power BI Copilot — AI Analytics is Here</div>
@@ -219,7 +219,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
         </div>
       </a>
       <a href="blog-aws-reinvent-2026.html" class="blog-card fade-up">
-        <div class="blog-card-thumb" style="background:linear-gradient(145deg,#021008,#041e10);">☁️</div>
+        <img class="blog-card-thumb" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80&auto=format&fit=crop" alt="AWS Cloud 2026" loading="lazy">
         <div class="blog-card-body">
           <div class="blog-card-cat">☁️ Cloud Engineering</div>
           <div class="blog-card-title">AWS re:Invent 2026 — Key Cloud Announcements</div>
@@ -228,7 +228,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
         </div>
       </a>
       <a href="blog-mulesoft-47.html" class="blog-card fade-up">
-        <div class="blog-card-thumb" style="background:linear-gradient(145deg,#100208,#200410);">⚡</div>
+        <img class="blog-card-thumb" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&auto=format&fit=crop" alt="MuleSoft API Integration" loading="lazy">
         <div class="blog-card-body">
           <div class="blog-card-cat">⚡ Integration & API</div>
           <div class="blog-card-title">MuleSoft 4.7 — What's New for Integration Devs</div>
@@ -332,7 +332,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
       <div class="newsletter-sub">Get the latest articles, course updates, and community news delivered to your inbox. No spam — just good content.</div>
       <div class="newsletter-form">
         <input class="newsletter-input" type="email" id="nlEmail" placeholder="your@email.com">
-        <a href="#" class="btn-primary" style="white-space:nowrap;padding:12px 22px;" onclick="subscribeNL(event)">Subscribe →</a>
+        <button class="btn-primary" id="sub-btn" style="white-space:nowrap;padding:12px 22px;" onclick="subscribeNL(event)">Subscribe →</button>
       </div>
     </div>
   </div>
@@ -372,6 +372,40 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAllDD(
   </div>
 </footer>
 
+<script>
+function subscribeNL(e){
+  e.preventDefault();
+  var emailEl = document.getElementById('nlEmail');
+  var btn = document.getElementById('sub-btn');
+  if(!emailEl) return;
+  var email = emailEl.value.trim();
+  if(!email || !email.includes('@')){ alert('Please enter a valid email address.'); return; }
+  btn.textContent = 'Subscribing...'; btn.disabled = true;
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      access_key:'ba105abb-722f-4e39-b5c7-9052f5e52112',
+      email:email,
+      name:'Newsletter Subscriber',
+      subject:'New Newsletter Subscription — AfroCodersHub Blog',
+      from_name:'AfroCodersHub Blog'
+    })
+  }).then(function(r){return r.json();}).then(function(data){
+    if(data.success){
+      btn.textContent='Subscribed ✓';
+      emailEl.value='';
+      setTimeout(function(){btn.textContent='Subscribe →';btn.disabled=false;},4000);
+    } else {
+      alert('Something went wrong. Please try again.');
+      btn.textContent='Subscribe →';btn.disabled=false;
+    }
+  }).catch(function(){
+    alert('Network error. Please try again.');
+    btn.textContent='Subscribe →';btn.disabled=false;
+  });
+}
+</script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </script>
 </body>
