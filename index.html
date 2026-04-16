@@ -1089,6 +1089,8 @@ function sendMsg(){
       document.getElementById('cemail').value='';
       document.getElementById('cmsg').value='';
       btn.textContent='Sent ✓';
+      // GA4 conversion event
+      if(typeof gtag!=='undefined'){ gtag('event','form_submit',{form_name:'contact',page:'home'}); }
       setTimeout(function(){btn.textContent='Send Message →';btn.disabled=false;successEl.style.display='none';},5000);
     } else {
       errorEl.style.display='block';successEl.style.display='none';
